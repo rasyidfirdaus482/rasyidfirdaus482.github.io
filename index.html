@@ -380,6 +380,40 @@
             min-height: 150px;
         }
 
+        /* Google Search Section */
+        #search-section {
+            padding: 3rem 0;
+            background: rgba(30, 41, 59, 0.5);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        #search-section h2 {
+            margin-bottom: 2rem;
+        }
+
+        .gcse-search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .gcse-search {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Custom styling for Google CSE */
+        .gs-container {
+            background: transparent !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 0.5rem !important;
+        }
+
+        .gs-control {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        }
+
         /* Footer */
         footer {
             background: rgba(15, 23, 42, 0.95);
@@ -433,6 +467,10 @@
                 width: 100%;
                 max-width: 200px;
             }
+
+            .gcse-search {
+                width: 100% !important;
+            }
         }
     </style>
 </head>
@@ -446,6 +484,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#search">Search</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -573,6 +612,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Google Programmable Search Engine Section -->
+    <section id="search">
+        <div class="container">
+            <h2>🔍 Search</h2>
+            <div class="gcse-search-box">
+                <div class="gcse-search"></div>
+            </div>
+            <!-- Google CSE Script -->
+            <script async src="https://cse.google.com/cse.js?cx=177be523636a5431a"></script>
         </div>
     </section>
 
