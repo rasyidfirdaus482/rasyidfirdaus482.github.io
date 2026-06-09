@@ -65,6 +65,7 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
 
         nav a {
@@ -75,6 +76,38 @@
         }
 
         nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            border-left: 1px solid var(--border-color);
+            padding-left: 1.5rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--light-text);
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            border-color: var(--primary-color);
+        }
+
+        .lang-btn:hover:not(.active) {
+            border-color: var(--primary-color);
             color: var(--primary-color);
         }
 
@@ -525,10 +558,32 @@
             nav ul {
                 gap: 1rem;
                 font-size: 0.85rem;
+                flex-wrap: wrap;
             }
 
             nav {
                 padding: 0.75rem 1rem;
+            }
+
+            .lang-switcher {
+                padding-left: 1rem;
+                border-left-width: 0;
+                order: 3;
+                width: 100%;
+                margin-top: 1rem;
+                justify-content: center;
+                border-left: none;
+            }
+
+            nav .container {
+                flex-wrap: wrap;
+            }
+
+            nav ul:not(.lang-switcher) {
+                width: 100%;
+                justify-content: center;
+                order: 2;
+                margin-top: 1rem;
             }
 
             .hero-content h1 {
@@ -599,6 +654,11 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .lang-btn {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.6rem;
+            }
         }
     </style>
 </head>
@@ -607,25 +667,29 @@
     <nav>
         <div class="container">
             <div class="logo">KuroTech</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#products">Produk</a></li>
-                <li><a href="#services">Layanan</a></li>
-                <li><a href="#contact">Kontak</a></li>
+            <ul id="nav-menu">
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about" data-i18n="nav.about">Tentang</a></li>
+                <li><a href="#products" data-i18n="nav.products">Produk</a></li>
+                <li><a href="#services" data-i18n="nav.services">Layanan</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Kontak</a></li>
             </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="id">ID</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Solusi Digital untuk Bisnis, POS, dan Keuangan</h1>
-            <p class="subtitle">Teknologi yang Mempermudah Transaksi dan Manajemen Keuangan</p>
-            <p>KuroTech mengembangkan aplikasi modern seperti KuroPOS dan Kuro untuk membantu bisnis, UMKM, toko, dan individu mengelola transaksi serta keuangan dengan lebih mudah, cepat, dan terstruktur.</p>
+            <h1 data-i18n="hero.title">Solusi Digital untuk Bisnis, POS, dan Keuangan</h1>
+            <p class="subtitle" data-i18n="hero.subtitle">Teknologi yang Mempermudah Transaksi dan Manajemen Keuangan</p>
+            <p data-i18n="hero.description">KuroTech mengembangkan aplikasi modern seperti KuroPOS dan Kuro untuk membantu bisnis, UMKM, toko, dan individu mengelola transaksi serta keuangan dengan lebih mudah, cepat, dan terstruktur.</p>
             <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Lihat Produk</button>
-                <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Hubungi Kami</button>
+                <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})" data-i18n="hero.btn_products">Lihat Produk</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" data-i18n="hero.btn_contact">Hubungi Kami</button>
             </div>
         </div>
     </section>
@@ -633,13 +697,13 @@
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2><span>Tentang KuroTech</span></h2>
+            <h2><span data-i18n="about.title">Tentang KuroTech</span></h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Solusi Teknologi untuk Bisnis Lokal</h3>
-                    <p>KuroTech adalah perusahaan teknologi yang fokus pada pengembangan aplikasi digital untuk membantu bisnis, UMKM, toko, dan individu mengelola aspek operasional dan finansial dengan lebih efisien.</p>
-                    <p>Kami memahami tantangan yang dihadapi bisnis lokal dalam mengelola transaksi penjualan, stok, laporan, dan keuangan. Dengan teknologi terdepan dan desain yang sederhana, kami menciptakan solusi yang praktis dan mudah digunakan.</p>
-                    <p>Selain produk ready-to-use seperti KuroPOS dan Kuro, kami juga melayani jasa pembuatan aplikasi custom sesuai kebutuhan bisnis Anda, termasuk integrasi hardware IoT dan perangkat khusus.</p>
+                    <h3 data-i18n="about.heading">Solusi Teknologi untuk Bisnis Lokal</h3>
+                    <p data-i18n="about.text1">KuroTech adalah perusahaan teknologi yang fokus pada pengembangan aplikasi digital untuk membantu bisnis, UMKM, toko, dan individu mengelola aspek operasional dan finansial dengan lebih efisien.</p>
+                    <p data-i18n="about.text2">Kami memahami tantangan yang dihadapi bisnis lokal dalam mengelola transaksi penjualan, stok, laporan, dan keuangan. Dengan teknologi terdepan dan desain yang sederhana, kami menciptakan solusi yang praktis dan mudah digunakan.</p>
+                    <p data-i18n="about.text3">Selain produk ready-to-use seperti KuroPOS dan Kuro, kami juga melayani jasa pembuatan aplikasi custom sesuai kebutuhan bisnis Anda, termasuk integrasi hardware IoT dan perangkat khusus.</p>
                 </div>
                 <div class="about-image">💼</div>
             </div>
@@ -649,34 +713,34 @@
     <!-- Products Section -->
     <section id="products">
         <div class="container">
-            <h2><span>Produk Kami</span></h2>
+            <h2><span data-i18n="products.title">Produk Kami</span></h2>
             <div class="products-grid">
                 <!-- KuroPOS Product Card -->
                 <div class="product-card">
                     <div class="icon">🖥️</div>
                     <h3>KuroPOS</h3>
-                    <p>Aplikasi POS modern yang dirancang khusus untuk toko, UMKM, minimarket, dan bisnis ritel lainnya.</p>
+                    <p data-i18n="products.kuropos_desc">Aplikasi POS modern yang dirancang khusus untuk toko, UMKM, minimarket, dan bisnis ritel lainnya.</p>
                     <ul>
-                        <li>Manajemen produk satuan dan timbang</li>
-                        <li>Transaksi penjualan cepat dan akurat</li>
-                        <li>Integrasi timbangan IoT real-time</li>
-                        <li>Laporan penjualan dan stok otomatis</li>
+                        <li data-i18n="products.kuropos_f1">Manajemen produk satuan dan timbang</li>
+                        <li data-i18n="products.kuropos_f2">Transaksi penjualan cepat dan akurat</li>
+                        <li data-i18n="products.kuropos_f3">Integrasi timbangan IoT real-time</li>
+                        <li data-i18n="products.kuropos_f4">Laporan penjualan dan stok otomatis</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="document.getElementById('kuropos-features').scrollIntoView({behavior: 'smooth'})">Pelajari KuroPOS</button>
+                    <button class="btn btn-primary" onclick="document.getElementById('kuropos-features').scrollIntoView({behavior: 'smooth'})" data-i18n="products.btn_learn">Pelajari KuroPOS</button>
                 </div>
 
                 <!-- Kuro Product Card -->
                 <div class="product-card">
                     <div class="icon">💰</div>
                     <h3>Kuro</h3>
-                    <p>Aplikasi pencatatan keuangan pribadi yang membantu Anda memahami arus uang dan mengelola keuangan dengan lebih terstruktur.</p>
+                    <p data-i18n="products.kuro_desc">Aplikasi pencatatan keuangan pribadi yang membantu Anda memahami arus uang dan mengelola keuangan dengan lebih terstruktur.</p>
                     <ul>
-                        <li>Catatan pemasukan dan pengeluaran</li>
-                        <li>Manajemen dompet dan kategori</li>
-                        <li>Fitur hutang dan piutang</li>
-                        <li>Target tabungan dan ringkasan keuangan</li>
+                        <li data-i18n="products.kuro_f1">Catatan pemasukan dan pengeluaran</li>
+                        <li data-i18n="products.kuro_f2">Manajemen dompet dan kategori</li>
+                        <li data-i18n="products.kuro_f3">Fitur hutang dan piutang</li>
+                        <li data-i18n="products.kuro_f4">Target tabungan dan ringkasan keuangan</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="document.getElementById('kuro-features').scrollIntoView({behavior: 'smooth'})">Pelajari Kuro</button>
+                    <button class="btn btn-primary" onclick="document.getElementById('kuro-features').scrollIntoView({behavior: 'smooth'})" data-i18n="products.btn_learn">Pelajari Kuro</button>
                 </div>
             </div>
         </div>
@@ -685,53 +749,53 @@
     <!-- KuroPOS Features Section -->
     <section id="kuropos-features">
         <div class="container">
-            <h2><span>Fitur KuroPOS</span></h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">Dilengkapi dengan fitur-fitur lengkap untuk mendukung operasional bisnis retail modern dengan integrasi hardware canggih.</p>
+            <h2><span data-i18n="features_kuropos.title">Fitur KuroPOS</span></h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;" data-i18n="features_kuropos.desc">Dilengkapi dengan fitur-fitur lengkap untuk mendukung operasional bisnis retail modern dengan integrasi hardware canggih.</p>
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">📦</div>
-                    <h4>Manajemen Produk</h4>
-                    <p>Kelola produk satuan dan timbang dengan mudah</p>
+                    <h4 data-i18n="features_kuropos.f1_title">Manajemen Produk</h4>
+                    <p data-i18n="features_kuropos.f1_desc">Kelola produk satuan dan timbang dengan mudah</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">⚖️</div>
-                    <h4>Integrasi Timbangan IoT</h4>
-                    <p>Baca berat real-time dari timbangan melalui MQTT/WebSocket</p>
+                    <h4 data-i18n="features_kuropos.f2_title">Integrasi Timbangan IoT</h4>
+                    <p data-i18n="features_kuropos.f2_desc">Baca berat real-time dari timbangan melalui MQTT/WebSocket</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">💳</div>
-                    <h4>Transaksi Cepat</h4>
-                    <p>Proses penjualan tanpa input manual yang berulang</p>
+                    <h4 data-i18n="features_kuropos.f3_title">Transaksi Cepat</h4>
+                    <p data-i18n="features_kuropos.f3_desc">Proses penjualan tanpa input manual yang berulang</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">📊</div>
-                    <h4>Laporan Penjualan</h4>
-                    <p>Analisis penjualan dan revenue secara otomatis</p>
+                    <h4 data-i18n="features_kuropos.f4_title">Laporan Penjualan</h4>
+                    <p data-i18n="features_kuropos.f4_desc">Analisis penjualan dan revenue secara otomatis</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">📈</div>
-                    <h4>Manajemen Stok</h4>
-                    <p>Pantau inventori produk secara real-time</p>
+                    <h4 data-i18n="features_kuropos.f5_title">Manajemen Stok</h4>
+                    <p data-i18n="features_kuropos.f5_desc">Pantau inventori produk secara real-time</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">💸</div>
-                    <h4>Pengeluaran</h4>
-                    <p>Catat dan pantau pengeluaran operasional bisnis</p>
+                    <h4 data-i18n="features_kuropos.f6_title">Pengeluaran</h4>
+                    <p data-i18n="features_kuropos.f6_desc">Catat dan pantau pengeluaran operasional bisnis</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">🔐</div>
-                    <h4>Multi Role Pengguna</h4>
-                    <p>Kelola akses dengan role kasir, manager, dan admin</p>
+                    <h4 data-i18n="features_kuropos.f7_title">Multi Role Pengguna</h4>
+                    <p data-i18n="features_kuropos.f7_desc">Kelola akses dengan role kasir, manager, dan admin</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">🖨️</div>
-                    <h4>Printer Thermal</h4>
-                    <p>Integrasi printer untuk struk penjualan</p>
+                    <h4 data-i18n="features_kuropos.f8_title">Printer Thermal</h4>
+                    <p data-i18n="features_kuropos.f8_desc">Integrasi printer untuk struk penjualan</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">📱</div>
-                    <h4>Scanner Barcode</h4>
-                    <p>Input produk otomatis dengan pemindai barcode</p>
+                    <h4 data-i18n="features_kuropos.f9_title">Scanner Barcode</h4>
+                    <p data-i18n="features_kuropos.f9_desc">Input produk otomatis dengan pemindai barcode</p>
                 </div>
             </div>
         </div>
@@ -740,53 +804,53 @@
     <!-- Kuro Features Section -->
     <section id="kuro-features">
         <div class="container">
-            <h2><span>Fitur Kuro</span></h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">Aplikasi keuangan pribadi dengan fitur lengkap untuk membantu Anda memahami dan mengelola arus uang dengan lebih baik.</p>
+            <h2><span data-i18n="features_kuro.title">Fitur Kuro</span></h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;" data-i18n="features_kuro.desc">Aplikasi keuangan pribadi dengan fitur lengkap untuk membantu Anda memahami dan mengelola arus uang dengan lebih baik.</p>
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">📥</div>
-                    <h4>Catatan Pemasukan</h4>
-                    <p>Catat semua sumber pemasukan uang Anda</p>
+                    <h4 data-i18n="features_kuro.f1_title">Catatan Pemasukan</h4>
+                    <p data-i18n="features_kuro.f1_desc">Catat semua sumber pemasukan uang Anda</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">📤</div>
-                    <h4>Catatan Pengeluaran</h4>
-                    <p>Lacak pengeluaran per kategori dengan detail</p>
+                    <h4 data-i18n="features_kuro.f2_title">Catatan Pengeluaran</h4>
+                    <p data-i18n="features_kuro.f2_desc">Lacak pengeluaran per kategori dengan detail</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">👛</div>
-                    <h4>Manajemen Dompet</h4>
-                    <p>Kelola multiple dompet atau rekening</p>
+                    <h4 data-i18n="features_kuro.f3_title">Manajemen Dompet</h4>
+                    <p data-i18n="features_kuro.f3_desc">Kelola multiple dompet atau rekening</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">🏷️</div>
-                    <h4>Kategori Transaksi</h4>
-                    <p>Buat kategori custom untuk mengorganisir pengeluaran</p>
+                    <h4 data-i18n="features_kuro.f4_title">Kategori Transaksi</h4>
+                    <p data-i18n="features_kuro.f4_desc">Buat kategori custom untuk mengorganisir pengeluaran</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">🤝</div>
-                    <h4>Hutang & Piutang</h4>
-                    <p>Catat dan pantau utang serta cicilan</p>
+                    <h4 data-i18n="features_kuro.f5_title">Hutang & Piutang</h4>
+                    <p data-i18n="features_kuro.f5_desc">Catat dan pantau utang serta cicilan</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">🎯</div>
-                    <h4>Target Tabungan</h4>
-                    <p>Tetapkan dan pantau target tabungan Anda</p>
+                    <h4 data-i18n="features_kuro.f6_title">Target Tabungan</h4>
+                    <p data-i18n="features_kuro.f6_desc">Tetapkan dan pantau target tabungan Anda</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">📊</div>
-                    <h4>Ringkasan Keuangan</h4>
-                    <p>Lihat overview finansial dengan visualisasi grafik</p>
+                    <h4 data-i18n="features_kuro.f7_title">Ringkasan Keuangan</h4>
+                    <p data-i18n="features_kuro.f7_desc">Lihat overview finansial dengan visualisasi grafik</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">📱</div>
-                    <h4>Riwayat Transaksi</h4>
-                    <p>Akses history lengkap semua transaksi Anda</p>
+                    <h4 data-i18n="features_kuro.f8_title">Riwayat Transaksi</h4>
+                    <p data-i18n="features_kuro.f8_desc">Akses history lengkap semua transaksi Anda</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">📈</div>
-                    <h4>Analisis Keuangan</h4>
-                    <p>Pahami pola belanja dan investasi keuangan Anda</p>
+                    <h4 data-i18n="features_kuro.f9_title">Analisis Keuangan</h4>
+                    <p data-i18n="features_kuro.f9_desc">Pahami pola belanja dan investasi keuangan Anda</p>
                 </div>
             </div>
         </div>
@@ -795,57 +859,57 @@
     <!-- Services Section -->
     <section id="services">
         <div class="container">
-            <h2><span>Layanan Kami</span></h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">Selain produk ready-to-use, KuroTech juga melayani pembuatan aplikasi custom untuk kebutuhan bisnis spesifik Anda dengan teknologi terkini.</p>
+            <h2><span data-i18n="services.title">Layanan Kami</span></h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;" data-i18n="services.desc">Selain produk ready-to-use, KuroTech juga melayani pembuatan aplikasi custom untuk kebutuhan bisnis spesifik Anda dengan teknologi terkini.</p>
             <div class="services-grid">
                 <!-- Web Development -->
                 <div class="service-card">
-                    <h3>🌐 Pembuatan Website</h3>
+                    <h3 data-i18n="services.web_title">🌐 Pembuatan Website</h3>
                     <ul>
-                        <li>Company profile profesional</li>
-                        <li>Landing page marketing</li>
-                        <li>Website bisnis responsif</li>
-                        <li>Website katalog produk</li>
+                        <li data-i18n="services.web_f1">Company profile profesional</li>
+                        <li data-i18n="services.web_f2">Landing page marketing</li>
+                        <li data-i18n="services.web_f3">Website bisnis responsif</li>
+                        <li data-i18n="services.web_f4">Website katalog produk</li>
                     </ul>
                 </div>
 
                 <!-- Web Application -->
                 <div class="service-card">
-                    <h3>💻 Pembuatan Aplikasi Web</h3>
+                    <h3 data-i18n="services.webapp_title">💻 Pembuatan Aplikasi Web</h3>
                     <ul>
-                        <li>Dashboard admin custom</li>
-                        <li>Sistem manajemen bisnis</li>
-                        <li>Aplikasi POS sesuai kebutuhan</li>
-                        <li>Sistem laporan dan monitoring</li>
+                        <li data-i18n="services.webapp_f1">Dashboard admin custom</li>
+                        <li data-i18n="services.webapp_f2">Sistem manajemen bisnis</li>
+                        <li data-i18n="services.webapp_f3">Aplikasi POS sesuai kebutuhan</li>
+                        <li data-i18n="services.webapp_f4">Sistem laporan dan monitoring</li>
                     </ul>
                 </div>
 
                 <!-- Mobile App -->
                 <div class="service-card">
-                    <h3>📱 Pembuatan Aplikasi Mobile</h3>
+                    <h3 data-i18n="services.mobile_title">📱 Pembuatan Aplikasi Mobile</h3>
                     <ul>
-                        <li>Aplikasi Android native</li>
-                        <li>Aplikasi pencatatan keuangan</li>
-                        <li>Aplikasi bisnis internal</li>
-                        <li>Aplikasi customer service/order</li>
+                        <li data-i18n="services.mobile_f1">Aplikasi Android native</li>
+                        <li data-i18n="services.mobile_f2">Aplikasi pencatatan keuangan</li>
+                        <li data-i18n="services.mobile_f3">Aplikasi bisnis internal</li>
+                        <li data-i18n="services.mobile_f4">Aplikasi customer service/order</li>
                     </ul>
                 </div>
 
                 <!-- IoT & Hardware Integration -->
                 <div class="service-card">
-                    <h3>⚙️ Integrasi Sistem & Hardware</h3>
+                    <h3 data-i18n="services.iot_title">⚙️ Integrasi Sistem & Hardware</h3>
                     <ul>
-                        <li>Integrasi timbangan IoT</li>
-                        <li>Integrasi MQTT/WebSocket</li>
-                        <li>Integrasi printer thermal</li>
-                        <li>Integrasi scanner barcode & API pihak ketiga</li>
+                        <li data-i18n="services.iot_f1">Integrasi timbangan IoT</li>
+                        <li data-i18n="services.iot_f2">Integrasi MQTT/WebSocket</li>
+                        <li data-i18n="services.iot_f3">Integrasi printer thermal</li>
+                        <li data-i18n="services.iot_f4">Integrasi scanner barcode & API pihak ketiga</li>
                     </ul>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
-                <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Konsultasikan kebutuhan aplikasi dan sistem bisnis Anda kepada tim ahli KuroTech. Kami siap membantu mewujudkan solusi digital yang tepat untuk bisnis Anda.</p>
-                <a href="https://wa.me/6283167961562?text=Halo%20KuroTech%2C%20saya%20tertarik%20untuk%20berkonsultasi%20tentang%20kebutuhan%20aplikasi%20custom%20bisnis%20saya.%20Bisa%20dibantu%3F" class="btn btn-primary" target="_blank">Konsultasi Sekarang</a>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;" data-i18n="services.cta_desc">Konsultasikan kebutuhan aplikasi dan sistem bisnis Anda kepada tim ahli KuroTech. Kami siap membantu mewujudkan solusi digital yang tepat untuk bisnis Anda.</p>
+                <a href="https://wa.me/6283167961562?text=Halo%20KuroTech%2C%20saya%20tertarik%20untuk%20berkonsultasi%20tentang%20kebutuhan%20aplikasi%20custom%20bisnis%20saya.%20Bisa%20dibantu%3F" class="btn btn-primary" target="_blank" data-i18n="services.cta_btn">Konsultasi Sekarang</a>
             </div>
         </div>
     </section>
@@ -853,37 +917,37 @@
     <!-- Why Choose Us Section -->
     <section>
         <div class="container">
-            <h2><span>Mengapa Memilih KuroTech?</span></h2>
+            <h2><span data-i18n="why.title">Mengapa Memilih KuroTech?</span></h2>
             <div class="why-choose-grid">
                 <div class="why-item">
                     <div class="why-icon">🎯</div>
-                    <h4>Solusi Lokal</h4>
-                    <p>Dibuat sesuai kebutuhan bisnis lokal Indonesia dengan pemahaman mendalam tentang industri retail dan UMKM.</p>
+                    <h4 data-i18n="why.reason1_title">Solusi Lokal</h4>
+                    <p data-i18n="why.reason1_desc">Dibuat sesuai kebutuhan bisnis lokal Indonesia dengan pemahaman mendalam tentang industri retail dan UMKM.</p>
                 </div>
                 <div class="why-item">
                     <div class="why-icon">🔧</div>
-                    <h4>Integrasi Hardware</h4>
-                    <p>Mendukung integrasi perangkat IoT seperti timbangan digital dan printer thermal untuk otomasi maksimal.</p>
+                    <h4 data-i18n="why.reason2_title">Integrasi Hardware</h4>
+                    <p data-i18n="why.reason2_desc">Mendukung integrasi perangkat IoT seperti timbangan digital dan printer thermal untuk otomasi maksimal.</p>
                 </div>
                 <div class="why-item">
                     <div class="why-icon">✨</div>
-                    <h4>Desain Simpel</h4>
-                    <p>Antarmuka yang sederhana dan intuitif sehingga mudah digunakan tanpa pelatihan khusus yang rumit.</p>
+                    <h4 data-i18n="why.reason3_title">Desain Simpel</h4>
+                    <p data-i18n="why.reason3_desc">Antarmuka yang sederhana dan intuitif sehingga mudah digunakan tanpa pelatihan khusus yang rumit.</p>
                 </div>
                 <div class="why-item">
                     <div class="why-icon">🚀</div>
-                    <h4>Cocok untuk UMKM</h4>
-                    <p>Dirancang khusus untuk toko, bisnis kecil, dan UMKM yang sedang berkembang dengan harga terjangkau.</p>
+                    <h4 data-i18n="why.reason4_title">Cocok untuk UMKM</h4>
+                    <p data-i18n="why.reason4_desc">Dirancang khusus untuk toko, bisnis kecil, dan UMKM yang sedang berkembang dengan harga terjangkau.</p>
                 </div>
                 <div class="why-item">
                     <div class="why-icon">🔄</div>
-                    <h4>Bisa Dikembangkan</h4>
-                    <p>Sistem yang fleksibel dan dapat disesuaikan untuk berkembang seiring pertumbuhan bisnis Anda.</p>
+                    <h4 data-i18n="why.reason5_title">Bisa Dikembangkan</h4>
+                    <p data-i18n="why.reason5_desc">Sistem yang fleksibel dan dapat disesuaikan untuk berkembang seiring pertumbuhan bisnis Anda.</p>
                 </div>
                 <div class="why-item">
                     <div class="why-icon">📞</div>
-                    <h4>Support Responsif</h4>
-                    <p>Tim support yang siap membantu menjawab pertanyaan dan menyelesaikan masalah dengan cepat.</p>
+                    <h4 data-i18n="why.reason6_title">Support Responsif</h4>
+                    <p data-i18n="why.reason6_desc">Tim support yang siap membantu menjawab pertanyaan dan menyelesaikan masalah dengan cepat.</p>
                 </div>
             </div>
         </div>
@@ -892,26 +956,26 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <h2><span>Hubungi Kami</span></h2>
+            <h2><span data-i18n="contact.title">Hubungi Kami</span></h2>
             <div class="contact-content">
-                <p>Tertarik dengan produk atau layanan kami? Hubungi tim KuroTech untuk diskusi lebih lanjut, demo produk, atau konsultasi kebutuhan bisnis Anda.</p>
+                <p data-i18n="contact.desc">Tertarik dengan produk atau layanan kami? Hubungi tim KuroTech untuk diskusi lebih lanjut, demo produk, atau konsultasi kebutuhan bisnis Anda.</p>
                 <div class="contact-links">
                     <!-- WhatsApp Contact -->
                     <a href="https://wa.me/6283167961562?text=Halo%20KuroTech%2C%20saya%20ingin%20bertanya%20tentang%20produk%20dan%20layanan%20Anda" class="contact-link" target="_blank">
                         <span class="icon">💬</span>
-                        WhatsApp
+                        <span data-i18n="contact.whatsapp">WhatsApp</span>
                     </a>
 
                     <!-- Email Contact -->
                     <a href="mailto:kurotech@kuroposku.me?subject=Pertanyaan%20KuroTech" class="contact-link">
                         <span class="icon">✉️</span>
-                        Email
+                        <span data-i18n="contact.email">Email</span>
                     </a>
 
                     <!-- Location -->
                     <div class="contact-link">
                         <span class="icon">📍</span>
-                        Indonesia
+                        <span data-i18n="contact.location">Indonesia</span>
                     </div>
                 </div>
             </div>
@@ -925,43 +989,327 @@
                 <div class="footer-section">
                     <h4>KuroTech</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">Tentang Kami</a></li>
-                        <li><a href="#products">Produk</a></li>
-                        <li><a href="#services">Layanan</a></li>
+                        <li><a href="#home" data-i18n="footer.home">Home</a></li>
+                        <li><a href="#about" data-i18n="footer.about">Tentang Kami</a></li>
+                        <li><a href="#products" data-i18n="footer.products">Produk</a></li>
+                        <li><a href="#services" data-i18n="footer.services">Layanan</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Produk</h4>
+                    <h4 data-i18n="footer.products_heading">Produk</h4>
                     <ul>
                         <li><a href="#kuropos-features">KuroPOS</a></li>
                         <li><a href="#kuro-features">Kuro</a></li>
-                        <li><a href="#services">Aplikasi Custom</a></li>
+                        <li><a href="#services" data-i18n="footer.custom_app">Aplikasi Custom</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Layanan</h4>
+                    <h4 data-i18n="footer.services_heading">Layanan</h4>
                     <ul>
-                        <li><a href="#services">Website</a></li>
-                        <li><a href="#services">Aplikasi Web</a></li>
-                        <li><a href="#services">Aplikasi Mobile</a></li>
-                        <li><a href="#services">Integrasi Hardware</a></li>
+                        <li><a href="#services" data-i18n="footer.website">Website</a></li>
+                        <li><a href="#services" data-i18n="footer.web_app">Aplikasi Web</a></li>
+                        <li><a href="#services" data-i18n="footer.mobile_app">Aplikasi Mobile</a></li>
+                        <li><a href="#services" data-i18n="footer.hardware_integration">Integrasi Hardware</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 KuroTech. All rights reserved.</p>
-                <p class="footer-tagline">Building practical software for business and finance.</p>
+                <p class="footer-tagline" data-i18n="footer.tagline">Building practical software for business and finance.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Translation data
+        const translations = {
+            id: {
+                'nav.home': 'Home',
+                'nav.about': 'Tentang',
+                'nav.products': 'Produk',
+                'nav.services': 'Layanan',
+                'nav.contact': 'Kontak',
+                'hero.title': 'Solusi Digital untuk Bisnis, POS, dan Keuangan',
+                'hero.subtitle': 'Teknologi yang Mempermudah Transaksi dan Manajemen Keuangan',
+                'hero.description': 'KuroTech mengembangkan aplikasi modern seperti KuroPOS dan Kuro untuk membantu bisnis, UMKM, toko, dan individu mengelola transaksi serta keuangan dengan lebih mudah, cepat, dan terstruktur.',
+                'hero.btn_products': 'Lihat Produk',
+                'hero.btn_contact': 'Hubungi Kami',
+                'about.title': 'Tentang KuroTech',
+                'about.heading': 'Solusi Teknologi untuk Bisnis Lokal',
+                'about.text1': 'KuroTech adalah perusahaan teknologi yang fokus pada pengembangan aplikasi digital untuk membantu bisnis, UMKM, toko, dan individu mengelola aspek operasional dan finansial dengan lebih efisien.',
+                'about.text2': 'Kami memahami tantangan yang dihadapi bisnis lokal dalam mengelola transaksi penjualan, stok, laporan, dan keuangan. Dengan teknologi terdepan dan desain yang sederhana, kami menciptakan solusi yang praktis dan mudah digunakan.',
+                'about.text3': 'Selain produk ready-to-use seperti KuroPOS dan Kuro, kami juga melayani jasa pembuatan aplikasi custom sesuai kebutuhan bisnis Anda, termasuk integrasi hardware IoT dan perangkat khusus.',
+                'products.title': 'Produk Kami',
+                'products.kuropos_desc': 'Aplikasi POS modern yang dirancang khusus untuk toko, UMKM, minimarket, dan bisnis ritel lainnya.',
+                'products.kuropos_f1': 'Manajemen produk satuan dan timbang',
+                'products.kuropos_f2': 'Transaksi penjualan cepat dan akurat',
+                'products.kuropos_f3': 'Integrasi timbangan IoT real-time',
+                'products.kuropos_f4': 'Laporan penjualan dan stok otomatis',
+                'products.kuro_desc': 'Aplikasi pencatatan keuangan pribadi yang membantu Anda memahami arus uang dan mengelola keuangan dengan lebih terstruktur.',
+                'products.kuro_f1': 'Catatan pemasukan dan pengeluaran',
+                'products.kuro_f2': 'Manajemen dompet dan kategori',
+                'products.kuro_f3': 'Fitur hutang dan piutang',
+                'products.kuro_f4': 'Target tabungan dan ringkasan keuangan',
+                'products.btn_learn': 'Pelajari',
+                'features_kuropos.title': 'Fitur KuroPOS',
+                'features_kuropos.desc': 'Dilengkapi dengan fitur-fitur lengkap untuk mendukung operasional bisnis retail modern dengan integrasi hardware canggih.',
+                'features_kuropos.f1_title': 'Manajemen Produk',
+                'features_kuropos.f1_desc': 'Kelola produk satuan dan timbang dengan mudah',
+                'features_kuropos.f2_title': 'Integrasi Timbangan IoT',
+                'features_kuropos.f2_desc': 'Baca berat real-time dari timbangan melalui MQTT/WebSocket',
+                'features_kuropos.f3_title': 'Transaksi Cepat',
+                'features_kuropos.f3_desc': 'Proses penjualan tanpa input manual yang berulang',
+                'features_kuropos.f4_title': 'Laporan Penjualan',
+                'features_kuropos.f4_desc': 'Analisis penjualan dan revenue secara otomatis',
+                'features_kuropos.f5_title': 'Manajemen Stok',
+                'features_kuropos.f5_desc': 'Pantau inventori produk secara real-time',
+                'features_kuropos.f6_title': 'Pengeluaran',
+                'features_kuropos.f6_desc': 'Catat dan pantau pengeluaran operasional bisnis',
+                'features_kuropos.f7_title': 'Multi Role Pengguna',
+                'features_kuropos.f7_desc': 'Kelola akses dengan role kasir, manager, dan admin',
+                'features_kuropos.f8_title': 'Printer Thermal',
+                'features_kuropos.f8_desc': 'Integrasi printer untuk struk penjualan',
+                'features_kuropos.f9_title': 'Scanner Barcode',
+                'features_kuropos.f9_desc': 'Input produk otomatis dengan pemindai barcode',
+                'features_kuro.title': 'Fitur Kuro',
+                'features_kuro.desc': 'Aplikasi keuangan pribadi dengan fitur lengkap untuk membantu Anda memahami dan mengelola arus uang dengan lebih baik.',
+                'features_kuro.f1_title': 'Catatan Pemasukan',
+                'features_kuro.f1_desc': 'Catat semua sumber pemasukan uang Anda',
+                'features_kuro.f2_title': 'Catatan Pengeluaran',
+                'features_kuro.f2_desc': 'Lacak pengeluaran per kategori dengan detail',
+                'features_kuro.f3_title': 'Manajemen Dompet',
+                'features_kuro.f3_desc': 'Kelola multiple dompet atau rekening',
+                'features_kuro.f4_title': 'Kategori Transaksi',
+                'features_kuro.f4_desc': 'Buat kategori custom untuk mengorganisir pengeluaran',
+                'features_kuro.f5_title': 'Hutang & Piutang',
+                'features_kuro.f5_desc': 'Catat dan pantau utang serta cicilan',
+                'features_kuro.f6_title': 'Target Tabungan',
+                'features_kuro.f6_desc': 'Tetapkan dan pantau target tabungan Anda',
+                'features_kuro.f7_title': 'Ringkasan Keuangan',
+                'features_kuro.f7_desc': 'Lihat overview finansial dengan visualisasi grafik',
+                'features_kuro.f8_title': 'Riwayat Transaksi',
+                'features_kuro.f8_desc': 'Akses history lengkap semua transaksi Anda',
+                'features_kuro.f9_title': 'Analisis Keuangan',
+                'features_kuro.f9_desc': 'Pahami pola belanja dan investasi keuangan Anda',
+                'services.title': 'Layanan Kami',
+                'services.desc': 'Selain produk ready-to-use, KuroTech juga melayani pembuatan aplikasi custom untuk kebutuhan bisnis spesifik Anda dengan teknologi terkini.',
+                'services.web_title': '🌐 Pembuatan Website',
+                'services.web_f1': 'Company profile profesional',
+                'services.web_f2': 'Landing page marketing',
+                'services.web_f3': 'Website bisnis responsif',
+                'services.web_f4': 'Website katalog produk',
+                'services.webapp_title': '💻 Pembuatan Aplikasi Web',
+                'services.webapp_f1': 'Dashboard admin custom',
+                'services.webapp_f2': 'Sistem manajemen bisnis',
+                'services.webapp_f3': 'Aplikasi POS sesuai kebutuhan',
+                'services.webapp_f4': 'Sistem laporan dan monitoring',
+                'services.mobile_title': '📱 Pembuatan Aplikasi Mobile',
+                'services.mobile_f1': 'Aplikasi Android native',
+                'services.mobile_f2': 'Aplikasi pencatatan keuangan',
+                'services.mobile_f3': 'Aplikasi bisnis internal',
+                'services.mobile_f4': 'Aplikasi customer service/order',
+                'services.iot_title': '⚙️ Integrasi Sistem & Hardware',
+                'services.iot_f1': 'Integrasi timbangan IoT',
+                'services.iot_f2': 'Integrasi MQTT/WebSocket',
+                'services.iot_f3': 'Integrasi printer thermal',
+                'services.iot_f4': 'Integrasi scanner barcode & API pihak ketiga',
+                'services.cta_desc': 'Konsultasikan kebutuhan aplikasi dan sistem bisnis Anda kepada tim ahli KuroTech. Kami siap membantu mewujudkan solusi digital yang tepat untuk bisnis Anda.',
+                'services.cta_btn': 'Konsultasi Sekarang',
+                'why.title': 'Mengapa Memilih KuroTech?',
+                'why.reason1_title': 'Solusi Lokal',
+                'why.reason1_desc': 'Dibuat sesuai kebutuhan bisnis lokal Indonesia dengan pemahaman mendalam tentang industri retail dan UMKM.',
+                'why.reason2_title': 'Integrasi Hardware',
+                'why.reason2_desc': 'Mendukung integrasi perangkat IoT seperti timbangan digital dan printer thermal untuk otomasi maksimal.',
+                'why.reason3_title': 'Desain Simpel',
+                'why.reason3_desc': 'Antarmuka yang sederhana dan intuitif sehingga mudah digunakan tanpa pelatihan khusus yang rumit.',
+                'why.reason4_title': 'Cocok untuk UMKM',
+                'why.reason4_desc': 'Dirancang khusus untuk toko, bisnis kecil, dan UMKM yang sedang berkembang dengan harga terjangkau.',
+                'why.reason5_title': 'Bisa Dikembangkan',
+                'why.reason5_desc': 'Sistem yang fleksibel dan dapat disesuaikan untuk berkembang seiring pertumbuhan bisnis Anda.',
+                'why.reason6_title': 'Support Responsif',
+                'why.reason6_desc': 'Tim support yang siap membantu menjawab pertanyaan dan menyelesaikan masalah dengan cepat.',
+                'contact.title': 'Hubungi Kami',
+                'contact.desc': 'Tertarik dengan produk atau layanan kami? Hubungi tim KuroTech untuk diskusi lebih lanjut, demo produk, atau konsultasi kebutuhan bisnis Anda.',
+                'contact.whatsapp': 'WhatsApp',
+                'contact.email': 'Email',
+                'contact.location': 'Indonesia',
+                'footer.home': 'Home',
+                'footer.about': 'Tentang Kami',
+                'footer.products': 'Produk',
+                'footer.services': 'Layanan',
+                'footer.products_heading': 'Produk',
+                'footer.custom_app': 'Aplikasi Custom',
+                'footer.services_heading': 'Layanan',
+                'footer.website': 'Website',
+                'footer.web_app': 'Aplikasi Web',
+                'footer.mobile_app': 'Aplikasi Mobile',
+                'footer.hardware_integration': 'Integrasi Hardware',
+                'footer.tagline': 'Building practical software for business and finance.'
+            },
+            en: {
+                'nav.home': 'Home',
+                'nav.about': 'About',
+                'nav.products': 'Products',
+                'nav.services': 'Services',
+                'nav.contact': 'Contact',
+                'hero.title': 'Digital Solutions for Business, POS, and Finance',
+                'hero.subtitle': 'Technology That Simplifies Transactions and Financial Management',
+                'hero.description': 'KuroTech develops modern applications like KuroPOS and Kuro to help businesses, SMEs, stores, and individuals manage transactions and finances more easily, quickly, and structurally.',
+                'hero.btn_products': 'View Products',
+                'hero.btn_contact': 'Contact Us',
+                'about.title': 'About KuroTech',
+                'about.heading': 'Technology Solutions for Local Business',
+                'about.text1': 'KuroTech is a technology company focused on developing digital applications to help businesses, SMEs, stores, and individuals manage operational and financial aspects more efficiently.',
+                'about.text2': 'We understand the challenges faced by local businesses in managing sales transactions, inventory, reports, and finances. With cutting-edge technology and simple design, we create practical and easy-to-use solutions.',
+                'about.text3': 'In addition to ready-to-use products like KuroPOS and Kuro, we also provide custom application development services tailored to your business needs, including IoT hardware integration and special devices.',
+                'products.title': 'Our Products',
+                'products.kuropos_desc': 'Modern POS application designed specifically for stores, SMEs, minimarkets, and other retail businesses.',
+                'products.kuropos_f1': 'Unit and weighted product management',
+                'products.kuropos_f2': 'Fast and accurate sales transactions',
+                'products.kuropos_f3': 'Real-time IoT scale integration',
+                'products.kuropos_f4': 'Automatic sales and inventory reports',
+                'products.kuro_desc': 'Personal financial recording application that helps you understand cash flow and manage finances more structurally.',
+                'products.kuro_f1': 'Income and expense records',
+                'products.kuro_f2': 'Wallet and category management',
+                'products.kuro_f3': 'Debt and receivables features',
+                'products.kuro_f4': 'Savings goals and financial summaries',
+                'products.btn_learn': 'Learn More',
+                'features_kuropos.title': 'KuroPOS Features',
+                'features_kuropos.desc': 'Equipped with comprehensive features to support modern retail business operations with advanced hardware integration.',
+                'features_kuropos.f1_title': 'Product Management',
+                'features_kuropos.f1_desc': 'Manage unit and weighted products easily',
+                'features_kuropos.f2_title': 'IoT Scale Integration',
+                'features_kuropos.f2_desc': 'Read real-time weight from scales via MQTT/WebSocket',
+                'features_kuropos.f3_title': 'Fast Transactions',
+                'features_kuropos.f3_desc': 'Process sales without repetitive manual input',
+                'features_kuropos.f4_title': 'Sales Reports',
+                'features_kuropos.f4_desc': 'Automatically analyze sales and revenue',
+                'features_kuropos.f5_title': 'Inventory Management',
+                'features_kuropos.f5_desc': 'Monitor product inventory in real-time',
+                'features_kuropos.f6_title': 'Expenses',
+                'features_kuropos.f6_desc': 'Record and monitor business operational costs',
+                'features_kuropos.f7_title': 'Multi-User Roles',
+                'features_kuropos.f7_desc': 'Manage access with cashier, manager, and admin roles',
+                'features_kuropos.f8_title': 'Thermal Printer',
+                'features_kuropos.f8_desc': 'Printer integration for receipt printing',
+                'features_kuropos.f9_title': 'Barcode Scanner',
+                'features_kuropos.f9_desc': 'Automatic product input with barcode scanning',
+                'features_kuro.title': 'Kuro Features',
+                'features_kuro.desc': 'Personal finance app with comprehensive features to help you understand and manage your cash flow better.',
+                'features_kuro.f1_title': 'Income Records',
+                'features_kuro.f1_desc': 'Record all sources of income',
+                'features_kuro.f2_title': 'Expense Records',
+                'features_kuro.f2_desc': 'Track expenses by category in detail',
+                'features_kuro.f3_title': 'Wallet Management',
+                'features_kuro.f3_desc': 'Manage multiple wallets or accounts',
+                'features_kuro.f4_title': 'Transaction Categories',
+                'features_kuro.f4_desc': 'Create custom categories to organize expenses',
+                'features_kuro.f5_title': 'Debt & Receivables',
+                'features_kuro.f5_desc': 'Record and monitor debts and installments',
+                'features_kuro.f6_title': 'Savings Goals',
+                'features_kuro.f6_desc': 'Set and monitor your savings targets',
+                'features_kuro.f7_title': 'Financial Summary',
+                'features_kuro.f7_desc': 'View financial overview with chart visualization',
+                'features_kuro.f8_title': 'Transaction History',
+                'features_kuro.f8_desc': 'Access complete history of all transactions',
+                'features_kuro.f9_title': 'Financial Analysis',
+                'features_kuro.f9_desc': 'Understand your spending patterns and financial investments',
+                'services.title': 'Our Services',
+                'services.desc': 'In addition to ready-to-use products, KuroTech also provides custom application development for your specific business needs with the latest technology.',
+                'services.web_title': '🌐 Website Development',
+                'services.web_f1': 'Professional company profile',
+                'services.web_f2': 'Marketing landing page',
+                'services.web_f3': 'Responsive business website',
+                'services.web_f4': 'Product catalog website',
+                'services.webapp_title': '💻 Web Application Development',
+                'services.webapp_f1': 'Custom admin dashboard',
+                'services.webapp_f2': 'Business management system',
+                'services.webapp_f3': 'Custom POS application',
+                'services.webapp_f4': 'Reporting and monitoring system',
+                'services.mobile_title': '📱 Mobile App Development',
+                'services.mobile_f1': 'Native Android application',
+                'services.mobile_f2': 'Financial recording app',
+                'services.mobile_f3': 'Internal business app',
+                'services.mobile_f4': 'Customer service/order app',
+                'services.iot_title': '⚙️ System & Hardware Integration',
+                'services.iot_f1': 'IoT scale integration',
+                'services.iot_f2': 'MQTT/WebSocket integration',
+                'services.iot_f3': 'Thermal printer integration',
+                'services.iot_f4': 'Barcode scanner & third-party API integration',
+                'services.cta_desc': 'Consult your application and business system needs to the KuroTech expert team. We are ready to help realize the right digital solution for your business.',
+                'services.cta_btn': 'Consult Now',
+                'why.title': 'Why Choose KuroTech?',
+                'why.reason1_title': 'Local Solutions',
+                'why.reason1_desc': 'Built according to local business needs in Indonesia with deep understanding of retail and SME industries.',
+                'why.reason2_title': 'Hardware Integration',
+                'why.reason2_desc': 'Support IoT device integration like digital scales and thermal printers for maximum automation.',
+                'why.reason3_title': 'Simple Design',
+                'why.reason3_desc': 'Simple and intuitive interface that is easy to use without special complex training.',
+                'why.reason4_title': 'Perfect for SMEs',
+                'why.reason4_desc': 'Designed specifically for stores, small businesses, and growing SMEs at affordable prices.',
+                'why.reason5_title': 'Flexible & Scalable',
+                'why.reason5_desc': 'Flexible system that can be customized to grow with your business development.',
+                'why.reason6_title': 'Responsive Support',
+                'why.reason6_desc': 'Support team ready to answer questions and resolve issues quickly.',
+                'contact.title': 'Contact Us',
+                'contact.desc': 'Interested in our products or services? Contact the KuroTech team for further discussion, product demo, or business consultation.',
+                'contact.whatsapp': 'WhatsApp',
+                'contact.email': 'Email',
+                'contact.location': 'Indonesia',
+                'footer.home': 'Home',
+                'footer.about': 'About Us',
+                'footer.products': 'Products',
+                'footer.services': 'Services',
+                'footer.products_heading': 'Products',
+                'footer.custom_app': 'Custom Application',
+                'footer.services_heading': 'Services',
+                'footer.website': 'Website',
+                'footer.web_app': 'Web Application',
+                'footer.mobile_app': 'Mobile Application',
+                'footer.hardware_integration': 'Hardware Integration',
+                'footer.tagline': 'Building practical software for business and finance.'
+            }
+        };
+
+        // Language switcher functionality
+        let currentLang = localStorage.getItem('preferredLang') || 'id';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+
+            // Update html lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Initialize language
+        setLanguage(currentLang);
+
+        // Language switcher event listeners
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                setLanguage(this.getAttribute('data-lang'));
+            });
+        });
+
         // Smooth scroll untuk navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                // Hanya jika link adalah internal (dimulai dengan #)
                 if (href.startsWith('#')) {
                     e.preventDefault();
                     const target = document.querySelector(href);
@@ -990,7 +1338,6 @@
             });
         }, observerOptions);
 
-        // Observe semua card elements
         document.querySelectorAll('.product-card, .service-card, .feature-item, .why-item, .skill-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
