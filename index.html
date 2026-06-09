@@ -3,307 +3,1633 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--
-      Keterangan: Untuk mengganti contact/email/phone, cari komentar "<!-- CONTACT_PLACEHOLDERS -->" di file ini.
-      Letakkan asset (logo, screenshot) di folder: assets/
-      Nama file rekomendasi (letakkan di repo root assets/):
-        - assets/logo.svg
-        - assets/kuropos-screenshot.png
-        - assets/kuro-screenshot.png
-        - assets/kuropos-thumb.png
-        - assets/kuro-thumb.png
-        - assets/service-web.png
-        - assets/service-app.png
-        - assets/hardware-integration.png
-        - assets/og-image.png
-    -->
     <meta name="description" content="KuroTech — Solusi digital untuk POS, transaksi, dan pencatatan keuangan bagi UMKM dan individu. KuroPOS dan Kuro, solusi praktis untuk toko dan keuangan pribadi.">
     <title>KuroTech - Solusi Digital POS dan Keuangan</title>
     <style>
-        /* Basic reset & vars */
-        *{box-sizing:border-box;margin:0;padding:0}
-        :root{
-            --bg-1:#05060a;--bg-2:#0f1724;--card:#0f1a2b;
-            --primary:#4f46e5;--accent:#06b6d4;--muted:#94a3b8;--text:#e6eef8;
-            --radius:12px;--maxw:1200px
+        /* ========== RESET & FOUNDATION ========== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--text);-webkit-font-smoothing:antialiased}
-        .container{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem}
-        nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(10,12,20,0.6),rgba(10,12,20,0.3));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
-        nav .inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
-        .brand{display:flex;align-items:center;gap:.75rem}
-        .logo{font-weight:800;color:var(--primary);font-size:1.05rem;letter-spacing:1px}
-        .tagline{font-size:.78rem;color:var(--muted)}
-        ul.nav{display:flex;gap:1rem;list-style:none;align-items:center}
-        ul.nav a{color:var(--text);text-decoration:none;font-weight:600;font-size:.95rem}
-        .lang-switcher{display:flex;gap:.5rem;border-left:1px solid rgba(255,255,255,0.03);padding-left:1rem;margin-left:1rem}
-        .lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:.35rem .6rem;border-radius:6px;color:var(--text);cursor:pointer;font-weight:700}
-        .lang-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 
-        .hero{min-height:78vh;display:flex;align-items:center}
-        .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center}
-        .eyebrow{display:inline-block;background:linear-gradient(90deg,var(--primary),var(--accent));padding:.3rem .6rem;border-radius:999px;color:#041022;font-weight:700;margin-bottom:1rem}
-        h1{font-size:2.25rem;line-height:1.05;margin-bottom:.6rem}
-        p.lead{color:var(--muted);max-width:70ch;margin-bottom:1.2rem}
-        .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
-        .btn{padding:.75rem 1.6rem;border-radius:10px;border:none;cursor:pointer;font-weight:700}
-        .btn-primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:#041022}
-        .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-darker: #050812;
+            --bg-card: #141829;
+            --bg-card-hover: #1a1f3a;
+            --primary: #5b6ff7;
+            --primary-light: #7c8bff;
+            --accent: #00d9ff;
+            --accent-light: #33e8ff;
+            --text-primary: #e4e7eb;
+            --text-secondary: #a8adb8;
+            --text-muted: #7a7f8c;
+            --border: rgba(255, 255, 255, 0.05);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --success: #00c896;
+            --warning: #ffa726;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --max-width: 1280px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.35);
+        }
 
-        .spotlight{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:1.25rem;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03)}
-        .spot-title{font-weight:700;margin-bottom:.5rem}
-        .spot-sub{color:var(--muted);font-size:.95rem;margin-bottom:.8rem}
-        .badge{display:inline-block;padding:.25rem .6rem;border-radius:8px;background:rgba(79,70,229,0.08);color:var(--primary);font-weight:700;font-size:.8rem}
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-        section{padding:4.5rem 0;border-bottom:1px solid rgba(255,255,255,0.02)}
-        section h2{font-size:1.6rem;margin-bottom:1.2rem}
-        .grid{display:grid;gap:1.5rem}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
 
-        .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
-        .card{background:var(--card);padding:1.2rem;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-        .muted{color:var(--muted);font-size:.95rem}
-        .features-list{list-style:none;padding-left:0;margin-top:.8rem}
-        .features-list li{padding:.45rem 0;color:var(--muted)}
+        /* Animated background gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(91, 111, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
 
-        .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-        .project-image{height:180px;border-radius:10px;overflow:hidden;background:linear-gradient(90deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center}
-        .project-image img{width:100%;height:100%;object-fit:cover;display:block}
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(10, 14, 39, 0.8) 0%, rgba(10, 14, 39, 0.4) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
 
-        .contact-content{text-align:center;max-width:700px;margin:0 auto}
-        .contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem}
-        .contact-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--text);text-decoration:none}
+        header.scrolled {
+            background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(10, 14, 39, 0.85) 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
 
-        footer{padding:2.5rem 0;color:var(--muted);text-align:center}
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
 
-        @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.spotlight{order:2;margin-top:1rem}}
-        @media (max-width:640px){h1{font-size:1.6rem}.lang-switcher{display:none}}
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(91, 111, 247, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            padding: 0.4rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
+        .lang-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 2px 8px rgba(91, 111, 247, 0.3);
+        }
+
+        .cta-header {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.6rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(91, 111, 247, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(91, 111, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-light);
+        }
+
+        .btn-ghost:hover {
+            background: var(--bg-card);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ========== HERO SECTION ========== */
+        main {
+            margin-top: 70px;
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 4rem 0;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(91, 111, 247, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(91, 111, 247, 0.1), rgba(0, 217, 255, 0.1));
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-box {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(91, 111, 247, 0.2), transparent);
+            border-radius: 50%;
+            animation: rotate 20s infinite linear;
+        }
+
+        .hero-box::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.15), transparent);
+            border-radius: 50%;
+            animation: rotate 25s infinite linear reverse;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-icon {
+            width: 80%;
+            max-width: 300px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 24px rgba(91, 111, 247, 0.3);
+        }
+
+        /* ========== STATS SECTION ========== */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(91, 111, 247, 0.05), rgba(0, 217, 255, 0.05));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(91, 111, 247, 0.15), rgba(0, 217, 255, 0.15));
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover));
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(91, 111, 247, 0.15);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, rgba(91, 111, 247, 0.2), rgba(0, 217, 255, 0.2));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .feature-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(91, 111, 247, 0.15), transparent);
+            border-radius: 50%;
+        }
+
+        /* ========== PRODUCTS SECTION ========== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(91, 111, 247, 0.05), transparent);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 32px rgba(91, 111, 247, 0.15);
+        }
+
+        .card:hover::before {
+            right: -30%;
+            top: -30%;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-tag {
+            background: linear-gradient(135deg, rgba(91, 111, 247, 0.15), rgba(0, 217, 255, 0.15));
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--primary-light);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(91, 111, 247, 0.1), rgba(0, 217, 255, 0.1));
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-features li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 800;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-actions .btn {
+            flex: 1;
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover));
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(91, 111, 247, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(0, 217, 255, 0.1);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(91, 111, 247, 0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .service-card ul {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .service-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-description {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover));
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-method:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(91, 111, 247, 0.1);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(91, 111, 247, 0.2), rgba(0, 217, 255, 0.2));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-method h3 {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            word-break: break-all;
+        }
+
+        .contact-method a:hover {
+            color: var(--accent);
+        }
+
+        .contact-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.3rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            main {
+                margin-top: 60px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-item {
+                flex-direction: column;
+            }
+
+            .section-description {
+                font-size: 1rem;
+            }
+
+            .lang-switcher {
+                display: none;
+            }
+
+            .cta-header {
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container inner">
-            <div class="brand">
-                <div>
-                    <div class="logo">KuroTech</div>
-                    <div class="tagline" data-i18n="tagline">Building practical software for business and finance</div>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#home" class="nav-brand">
+                    <div class="logo-icon">K</div>
+                    <div class="logo-text">
+                        <h1>KuroTech</h1>
+                        <p>DIGITAL SOLUTIONS</p>
+                    </div>
+                </a>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="id">ID</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-            </div>
-
-            <ul class="nav" id="nav-menu">
-                <li><a href="#home" data-i18n="nav.home">Home</a></li>
-                <li><a href="#about" data-i18n="nav.about">Tentang</a></li>
-                <li><a href="#products" data-i18n="nav.products">Produk</a></li>
-                <li><a href="#services" data-i18n="nav.services">Layanan</a></li>
-                <li><a href="#contact" data-i18n="nav.contact">Kontak</a></li>
-            </ul>
-
-            <div class="lang-switcher" role="navigation" aria-label="Language switcher">
-                <button class="lang-btn active" data-lang="id">ID</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-            </div>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main class="container">
-        <!-- HERO -->
+    <!-- MAIN -->
+    <main>
+        <!-- HERO SECTION -->
         <section id="home" class="hero">
-            <div class="hero-grid">
-                <div>
-                    <span class="eyebrow" data-i18n="hero.eyebrow">Solusi untuk UMKM & toko</span>
-                    <h1 data-i18n="hero.title">Solusi Digital untuk Bisnis, POS, dan Keuangan</h1>
-                    <p class="lead" data-i18n="hero.description">KuroTech membangun aplikasi modern — KuroPOS untuk toko dan Kuro untuk pencatatan keuangan pribadi — membantu UMKM dan individu mengelola transaksi, stok, dan arus kas dengan lebih rapi.</p>
-                    <div class="cta-row">
-                        <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta_products">Lihat Produk</button>
-                        <a class="btn btn-ghost" href="mailto:tech@kuroposku.me" data-i18n="hero.cta_contact">Hubungi Kami</a>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <span data-i18n="hero.badge">Solusi Digital Terdepan</span>
+                        </div>
+                        <h1 data-i18n="hero.title">Solusi Digital untuk Bisnis, POS, dan Keuangan</h1>
+                        <p class="hero-description" data-i18n="hero.description">KuroTech membangun aplikasi modern — KuroPOS untuk toko dan Kuro untuk pencatatan keuangan pribadi — membantu UMKM dan individu berkembang dengan teknologi yang praktis dan terpercaya.</p>
+                        <div class="hero-cta">
+                            <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta1">Lihat Produk</button>
+                            <a href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" data-i18n="hero.cta2">Hubungi Kami</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="hero-box">
+                            <div class="hero-icon">📱💼</div>
+                        </div>
                     </div>
                 </div>
 
-                <aside class="spotlight" aria-hidden="true">
-                    <div class="spot-title" data-i18n="spotlight.title">Kenapa memilih KuroTech</div>
-                    <div class="spot-sub" data-i18n="spotlight.sub">Solusi praktis untuk toko dan keuangan, mendukung integrasi hardware seperti timbangan IoT, printer thermal, dan scanner barcode.</div>
-                    <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
-                        <div class="badge" data-i18n="badge.hardware">Integrasi Hardware</div>
-                        <div class="badge" data-i18n="badge.usability">Mudah digunakan</div>
-                        <div class="badge" data-i18n="badge.local">Dibuat untuk kebutuhan lokal</div>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label" data-i18n="stats.products">Produk</div>
                     </div>
-                </aside>
+                    <div class="stat">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label" data-i18n="stats.services">Layanan</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label" data-i18n="stats.commitment">Komitmen</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- ABOUT -->
+        <!-- ABOUT SECTION -->
         <section id="about">
-            <div class="grid">
-                <h2 data-i18n="about.title">Tentang KuroTech</h2>
-                <p class="muted" data-i18n="about.long">KuroTech adalah perusahaan teknologi yang fokus pada pembuatan produk digital untuk UMKM, toko, dan individu. Kami menghadirkan KuroPOS — aplikasi POS modern dengan integrasi perangkat — serta Kuro — aplikasi pencatatan keuangan pribadi. Selain produk, kami juga menerima jasa pembuatan aplikasi custom sesuai kebutuhan bisnis.</p>
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag" data-i18n="about.tag">TENTANG KAMI</div>
+                    <h2 data-i18n="about.title">Siapa Kami?</h2>
+                    <p class="section-description" data-i18n="about.desc">KuroTech adalah perusahaan teknologi yang berkomitmen untuk menyediakan solusi digital berkualitas tinggi bagi UMKM dan individu di Indonesia.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3 data-i18n="about.vision">Visi Kami</h3>
+                        <p data-i18n="about.vision_desc">Menjadi mitra terpercaya dalam transformasi digital bisnis Indonesia, menyediakan solusi praktis yang mudah digunakan dan terjangkau untuk semua kalangan.</p>
+                        
+                        <h3 style="margin-top: 2rem;" data-i18n="about.mission">Misi Kami</h3>
+                        <p data-i18n="about.mission_desc">Mengembangkan aplikasi dan layanan teknologi yang inovatif, mendukung pertumbuhan bisnis UMKM melalui digitalisasi yang efisien dan berkelanjutan.</p>
+
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">⚡</div>
+                                <div class="feature-text">
+                                    <h4 data-i18n="feature1.title">Cepat & Efisien</h4>
+                                    <p data-i18n="feature1.desc">Solusi yang responsive dan optimal</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🛡️</div>
+                                <div class="feature-text">
+                                    <h4 data-i18n="feature2.title">Aman & Terpercaya</h4>
+                                    <p data-i18n="feature2.desc">Keamanan data adalah prioritas utama</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🤝</div>
+                                <div class="feature-text">
+                                    <h4 data-i18n="feature3.title">Suportif & Responsif</h4>
+                                    <p data-i18n="feature3.desc">Tim siap membantu kapan saja</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🎯</div>
+                                <div class="feature-text">
+                                    <h4 data-i18n="feature4.title">Solusi Terpadu</h4>
+                                    <p data-i18n="feature4.desc">Integrasi sempurna dengan kebutuhan Anda</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-image"></div>
+                </div>
             </div>
         </section>
 
-        <!-- PRODUCTS -->
+        <!-- PRODUCTS SECTION -->
         <section id="products">
-            <h2 data-i18n="products.title">Produk Kami</h2>
-            <div class="products-grid">
-                <div class="card">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem">
-                        <h3>KuroPOS</h3>
-                        <div class="pill" data-i18n="products.kuropos_tag">POS • Retail • IoT</div>
-                    </div>
-                    <div class="project-image" role="img" aria-label="KuroPOS screenshot">
-                        <img src="assets/kuropos-screenshot.png" alt="KuroPOS — aplikasi POS modern untuk UMKM">
-                    </div>
-                    <p class="muted" data-i18n="products.kuropos_desc">Aplikasi POS modern untuk toko, minimarket, dan UMKM yang menjual produk satuan maupun produk timbang. Integrasi real-time timbangan IoT untuk input berat otomatis.</p>
-                    <ul class="features-list" id="kuropos-features">
-                        <li>Manajemen produk</li>
-                        <li>Produk satuan & produk timbang</li>
-                        <li>Integrasi timbangan IoT (MQTT / WebSocket)</li>
-                        <li>Scanner barcode & printer thermal</li>
-                        <li>Laporan penjualan, pengeluaran, dan stok</li>
-                        <li>Multi role pengguna</li>
-                    </ul>
-                    <div style="display:flex;gap:.6rem;margin-top:1rem">
-                        <a class="btn btn-primary" href="#contact" data-i18n="products.learn">Pelajari KuroPOS</a>
-                        <a class="btn btn-ghost" href="mailto:tech@kuroposku.me" data-i18n="products.cta_contact">Hubungi Sales</a>
-                    </div>
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag" data-i18n="products.tag">PRODUK UNGGULAN</div>
+                    <h2 data-i18n="products.title">Solusi Produk Kami</h2>
+                    <p class="section-description" data-i18n="products.desc">Dua produk utama yang dirancang khusus untuk memenuhi kebutuhan bisnis dan keuangan pribadi Anda.</p>
                 </div>
 
-                <div class="card">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem">
-                        <h3>Kuro</h3>
-                        <div class="pill" data-i18n="products.kuro_tag">Keuangan Pribadi</div>
+                <div class="products-grid">
+                    <!-- KuroPOS -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">KuroPOS</h3>
+                            <span class="card-tag" data-i18n="products.kuropos_tag">POS • Retail • IoT</span>
+                        </div>
+
+                        <div class="card-image">📦💳</div>
+
+                        <p class="card-description" data-i18n="products.kuropos_desc">Aplikasi POS modern untuk toko, minimarket, dan UMKM yang menjual produk satuan maupun produk timbang dengan integrasi hardware real-time.</p>
+
+                        <ul class="card-features">
+                            <li data-i18n="feature.kuropos1">Manajemen produk & inventori</li>
+                            <li data-i18n="feature.kuropos2">Produk satuan & produk timbang</li>
+                            <li data-i18n="feature.kuropos3">Integrasi timbangan IoT</li>
+                            <li data-i18n="feature.kuropos4">Scanner barcode & printer thermal</li>
+                            <li data-i18n="feature.kuropos5">Laporan penjualan lengkap</li>
+                            <li data-i18n="feature.kuropos6">Multi role pengguna</li>
+                        </ul>
+
+                        <div class="card-actions">
+                            <a href="#contact" class="btn btn-primary" data-i18n="btn.learn">Pelajari Lebih Lanjut</a>
+                            <a href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" data-i18n="btn.contact">Hubungi</a>
+                        </div>
                     </div>
-                    <div class="project-image" role="img" aria-label="Kuro screenshot">
-                        <img src="assets/kuro-screenshot.png" alt="Kuro — aplikasi pencatatan keuangan pribadi">
-                    </div>
-                    <p class="muted" data-i18n="products.kuro_desc">Aplikasi pencatatan keuangan pribadi untuk mencatat pemasukan, pengeluaran, dompet, kategori, hutang/piutang, tabungan, dan ringkasan keuangan.</p>
-                    <ul class="features-list" id="kuro-features">
-                        <li>Catatan pemasukan & pengeluaran</li>
-                        <li>Dompet dan kategori</li>
-                        <li>Hutang & piutang</li>
-                        <li>Target tabungan & ringkasan keuangan</li>
-                        <li>Riwayat transaksi</li>
-                    </ul>
-                    <div style="display:flex;gap:.6rem;margin-top:1rem">
-                        <a class="btn btn-primary" href="#contact" data-i18n="products.learn">Pelajari Kuro</a>
-                        <a class="btn btn-ghost" href="mailto:tech@kuroposku.me" data-i18n="products.cta_contact">Request Demo</a>
+
+                    <!-- Kuro -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Kuro</h3>
+                            <span class="card-tag" data-i18n="products.kuro_tag">Keuangan Pribadi</span>
+                        </div>
+
+                        <div class="card-image">💰📊</div>
+
+                        <p class="card-description" data-i18n="products.kuro_desc">Aplikasi pencatatan keuangan pribadi untuk mencatat pemasukan, pengeluaran, dompet, kategori, hutang/piutang, tabungan, dan riwayat transaksi secara detail.</p>
+
+                        <ul class="card-features">
+                            <li data-i18n="feature.kuro1">Catatan pemasukan & pengeluaran</li>
+                            <li data-i18n="feature.kuro2">Manajemen dompet & kategori</li>
+                            <li data-i18n="feature.kuro3">Hutang & piutang tracking</li>
+                            <li data-i18n="feature.kuro4">Target tabungan & ringkasan</li>
+                            <li data-i18n="feature.kuro5">Laporan keuangan menyeluruh</li>
+                            <li data-i18n="feature.kuro6">Riwayat transaksi lengkap</li>
+                        </ul>
+
+                        <div class="card-actions">
+                            <a href="#contact" class="btn btn-primary" data-i18n="btn.learn">Pelajari Lebih Lanjut</a>
+                            <a href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" data-i18n="btn.request_demo">Request Demo</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services -->
+        <!-- SERVICES SECTION -->
         <section id="services">
-            <h2 data-i18n="services.title">Layanan Kami</h2>
-            <p class="muted" data-i18n="services.lead">KuroTech juga melayani pembuatan aplikasi custom untuk kebutuhan bisnis: website company profile, aplikasi POS, dashboard admin, aplikasi mobile, hingga integrasi perangkat IoT dan hardware pendukung.</p>
-            <div class="services-grid">
-                <div class="card">
-                    <h3>Pembuatan Website</h3>
-                    <ul class="features-list">
-                        <li>Company profile</li>
-                        <li>Landing page</li>
-                        <li>Website bisnis</li>
-                        <li>Website katalog produk</li>
-                    </ul>
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag" data-i18n="services.tag">LAYANAN KAMI</div>
+                    <h2 data-i18n="services.title">Solusi Layanan Kustom</h2>
+                    <p class="section-description" data-i18n="services.desc">Kami juga menyediakan layanan pembuatan aplikasi custom sesuai kebutuhan bisnis Anda yang spesifik.</p>
                 </div>
-                <div class="card">
-                    <h3>Pembuatan Aplikasi Web</h3>
-                    <ul class="features-list">
-                        <li>Dashboard admin</li>
-                        <li>Sistem manajemen bisnis</li>
-                        <li>Aplikasi POS custom</li>
-                        <li>Sistem laporan & monitoring</li>
-                    </ul>
+
+                <div class="services-grid">
+                    <!-- Website -->
+                    <div class="service-card">
+                        <div class="service-icon">🌐</div>
+                        <h3 data-i18n="service1.title">Pembuatan Website</h3>
+                        <ul>
+                            <li data-i18n="service1.item1">Company profile profesional</li>
+                            <li data-i18n="service1.item2">Landing page yang menarik</li>
+                            <li data-i18n="service1.item3">Website bisnis responsif</li>
+                            <li data-i18n="service1.item4">Katalog produk online</li>
+                            <li data-i18n="service1.item5">SEO-friendly</li>
+                        </ul>
+                    </div>
+
+                    <!-- Aplikasi Web -->
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h3 data-i18n="service2.title">Aplikasi Web Custom</h3>
+                        <ul>
+                            <li data-i18n="service2.item1">Dashboard admin powerful</li>
+                            <li data-i18n="service2.item2">Sistem manajemen bisnis</li>
+                            <li data-i18n="service2.item3">Aplikasi POS custom</li>
+                            <li data-i18n="service2.item4">Sistem laporan real-time</li>
+                            <li data-i18n="service2.item5">Monitoring & analytics</li>
+                        </ul>
+                    </div>
+
+                    <!-- Aplikasi Mobile -->
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3 data-i18n="service3.title">Aplikasi Mobile</h3>
+                        <ul>
+                            <li data-i18n="service3.item1">Aplikasi Android native</li>
+                            <li data-i18n="service3.item2">Apps keuangan & accounting</li>
+                            <li data-i18n="service3.item3">Aplikasi bisnis internal</li>
+                            <li data-i18n="service3.item4">Customer service apps</li>
+                            <li data-i18n="service3.item5">Platform e-commerce</li>
+                        </ul>
+                    </div>
+
+                    <!-- Integrasi Hardware -->
+                    <div class="service-card">
+                        <div class="service-icon">🔌</div>
+                        <h3 data-i18n="service4.title">Integrasi Sistem & Hardware</h3>
+                        <ul>
+                            <li data-i18n="service4.item1">Integrasi timbangan IoT</li>
+                            <li data-i18n="service4.item2">Koneksi MQTT & WebSocket</li>
+                            <li data-i18n="service4.item3">Printer thermal & scanner</li>
+                            <li data-i18n="service4.item4">API integrasi pihak ketiga</li>
+                            <li data-i18n="service4.item5">Real-time data synchronization</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Pembuatan Aplikasi Mobile</h3>
-                    <ul class="features-list">
-                        <li>Aplikasi Android</li>
-                        <li>Aplikasi pencatatan keuangan</li>
-                        <li>Aplikasi bisnis internal</li>
-                        <li>Aplikasi customer service/order sederhana</li>
-                    </ul>
+
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem;">
+                    <a href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="btn.consult">📞 Konsultasi Sekarang</a>
+                    <a href="mailto:tech@kuroposku.me" class="btn btn-secondary" data-i18n="btn.email">✉️ Email Kami</a>
                 </div>
-                <div class="card">
-                    <h3>Integrasi Sistem & Hardware</h3>
-                    <ul class="features-list">
-                        <li>Integrasi timbangan IoT</li>
-                        <li>Integrasi MQTT / WebSocket</li>
-                        <li>Integrasi printer thermal & scanner barcode</li>
-                        <li>Integrasi API pihak ketiga</li>
-                    </ul>
-                </div>
-            </div>
-            <div style="margin-top:1rem">
-                <a class="btn btn-primary" href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer">Konsultasi Sekarang</a>
-                <a class="btn btn-ghost" href="mailto:tech@kuroposku.me">Email Kami</a>
             </div>
         </section>
 
-        <!-- Contact -->
+        <!-- CONTACT SECTION -->
         <section id="contact">
-            <h2 data-i18n="contact.title">Kontak</h2>
-            <div class="contact-content">
-                <p class="muted" data-i18n="contact.lead">Hubungi kami untuk demo, konsultasi, atau permintaan fitur custom. Kami akan membantu merancang solusi yang sesuai kebutuhan bisnis Anda.</p>
-
-                <!-- CONTACT_PLACEHOLDERS: Ganti nomor dan email di sini jika perlu -->
-                <div class="contact-links" aria-label="contact">
-                    <a class="contact-link" href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer">WhatsApp: +62 831-6796-1562</a>
-                    <a class="contact-link" href="mailto:tech@kuroposku.me">Email: tech@kuroposku.me</a>
-                    <span class="contact-link">Lokasi: Indonesia</span>
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag" data-i18n="contact.tag">HUBUNGI KAMI</div>
+                    <h2 data-i18n="contact.title">Mari Bekerja Sama</h2>
+                    <p class="section-description" data-i18n="contact.desc">Hubungi kami untuk demo, konsultasi, atau permintaan fitur custom. Tim kami siap membantu merancang solusi yang sesuai kebutuhan bisnis Anda.</p>
                 </div>
-                <p class="muted" style="margin-top:1rem">Catatan: ini adalah situs statis GitHub Pages — tidak ada form backend. Gunakan WhatsApp atau email untuk komunikasi.</p>
+
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">💬</div>
+                        <h3 data-i18n="contact.whatsapp">WhatsApp</h3>
+                        <a href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer">+62 831-6796-1562</a>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">📧</div>
+                        <h3 data-i18n="contact.email">Email</h3>
+                        <a href="mailto:tech@kuroposku.me">tech@kuroposku.me</a>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">📍</div>
+                        <h3 data-i18n="contact.location">Lokasi</h3>
+                        <a href="#">Indonesia</a>
+                    </div>
+                </div>
+
+                <div class="contact-cta">
+                    <a href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="btn.start_chat">Mulai Chat</a>
+                </div>
             </div>
         </section>
-
     </main>
 
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div style="margin-bottom:.6rem">KuroTech — Building practical software for business and finance.</div>
-            <div class="muted">Produk: KuroPOS · Kuro</div>
-            <div style="margin-top:.8rem">&copy; <span id="year"></span> KuroTech. All rights reserved.</div>
+            <div class="footer-content">
+                <div class="footer-brand">KuroTech — Building practical software for business and finance</div>
+                <div style="color: var(--text-muted); margin-top: 0.5rem;">Produk: KuroPOS · Kuro</div>
+            </div>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">Tentang</a>
+                <a href="#products">Produk</a>
+                <a href="#services">Layanan</a>
+                <a href="#contact">Kontak</a>
+            </div>
+
+            <div style="padding-top: 1rem; border-top: 1px solid var(--border);">
+                <p>&copy; <span id="year"></span> KuroTech. All rights reserved.</p>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Situs ini adalah GitHub Pages statis — tidak ada form backend. Gunakan WhatsApp atau email untuk komunikasi.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Simple i18n using data-i18n attributes. Supports 'id' and 'en'.
+        // i18n translations
         const i18n = {
             id: {
-                'nav.home':'Home', 'nav.about':'Tentang', 'nav.products':'Produk', 'nav.services':'Layanan', 'nav.contact':'Kontak',
-                'tagline':'Building practical software for business and finance',
-                'hero.eyebrow':'Solusi untuk UMKM & toko', 'hero.title':'Solusi Digital untuk Bisnis, POS, dan Keuangan', 'hero.description':'KuroTech membangun aplikasi modern — KuroPOS untuk toko dan Kuro untuk pencatatan keuangan pribadi — membantu UMKM dan individu mengelola transaksi, stok, dan arus kas dengan lebih rapi.', 'hero.cta_products':'Lihat Produk','hero.cta_contact':'Hubungi Kami',
-                'spotlight.title':'Kenapa memilih KuroTech','spotlight.sub':'Solusi praktis untuk toko dan keuangan, mendukung integrasi hardware seperti timbangan IoT, printer thermal, dan scanner barcode.','badge.hardware':'Integrasi Hardware','badge.usability':'Mudah digunakan','badge.local':'Dibuat untuk kebutuhan lokal',
-                'about.title':'Tentang KuroTech','about.long':'KuroTech adalah perusahaan teknologi yang fokus pada pembuatan produk digital untuk UMKM, toko, dan individu. Kami menghadirkan KuroPOS — aplikasi POS modern dengan integrasi perangkat — serta Kuro — aplikasi pencatatan keuangan pribadi. Selain produk, kami juga menerima jasa pembuatan aplikasi custom sesuai kebutuhan bisnis.',
-                'products.title':'Produk Kami','products.kuropos_desc':'Aplikasi POS modern untuk toko, minimarket, dan UMKM yang menjual produk satuan maupun produk timbang. Integrasi real-time timbangan IoT untuk input berat otomatis.','products.kuro_desc':'Aplikasi pencatatan keuangan pribadi untuk mencatat pemasukan, pengeluaran, dompet, kategori, hutang/piutang, tabungan, dan ringkasan keuangan.','products.learn':'Pelajari','products.cta_contact':'Hubungi',
-                'services.title':'Layanan Kami','services.lead':'KuroTech juga melayani pembuatan aplikasi custom untuk kebutuhan bisnis, mulai dari website company profile, aplikasi POS, dashboard admin, hingga integrasi perangkat IoT dan hardware pendukung.',
-                'contact.title':'Kontak','contact.lead':'Hubungi kami untuk demo, konsultasi, atau permintaan fitur custom. Kami akan membantu merancang solusi yang sesuai kebutuhan bisnis Anda.'
+                'hero.badge': 'Solusi Digital Terdepan',
+                'hero.title': 'Solusi Digital untuk Bisnis, POS, dan Keuangan',
+                'hero.description': 'KuroTech membangun aplikasi modern — KuroPOS untuk toko dan Kuro untuk pencatatan keuangan pribadi — membantu UMKM dan individu berkembang dengan teknologi yang praktis dan terpercaya.',
+                'hero.cta1': 'Lihat Produk',
+                'hero.cta2': 'Hubungi Kami',
+                
+                'stats.products': 'Produk',
+                'stats.services': 'Layanan',
+                'stats.commitment': 'Komitmen',
+                
+                'about.tag': 'TENTANG KAMI',
+                'about.title': 'Siapa Kami?',
+                'about.desc': 'KuroTech adalah perusahaan teknologi yang berkomitmen untuk menyediakan solusi digital berkualitas tinggi bagi UMKM dan individu di Indonesia.',
+                'about.vision': 'Visi Kami',
+                'about.vision_desc': 'Menjadi mitra terpercaya dalam transformasi digital bisnis Indonesia, menyediakan solusi praktis yang mudah digunakan dan terjangkau untuk semua kalangan.',
+                'about.mission': 'Misi Kami',
+                'about.mission_desc': 'Mengembangkan aplikasi dan layanan teknologi yang inovatif, mendukung pertumbuhan bisnis UMKM melalui digitalisasi yang efisien dan berkelanjutan.',
+                
+                'feature1.title': 'Cepat & Efisien',
+                'feature1.desc': 'Solusi yang responsive dan optimal',
+                'feature2.title': 'Aman & Terpercaya',
+                'feature2.desc': 'Keamanan data adalah prioritas utama',
+                'feature3.title': 'Suportif & Responsif',
+                'feature3.desc': 'Tim siap membantu kapan saja',
+                'feature4.title': 'Solusi Terpadu',
+                'feature4.desc': 'Integrasi sempurna dengan kebutuhan Anda',
+                
+                'products.tag': 'PRODUK UNGGULAN',
+                'products.title': 'Solusi Produk Kami',
+                'products.desc': 'Dua produk utama yang dirancang khusus untuk memenuhi kebutuhan bisnis dan keuangan pribadi Anda.',
+                'products.kuropos_tag': 'POS • Retail • IoT',
+                'products.kuropos_desc': 'Aplikasi POS modern untuk toko, minimarket, dan UMKM yang menjual produk satuan maupun produk timbang dengan integrasi hardware real-time.',
+                'products.kuro_tag': 'Keuangan Pribadi',
+                'products.kuro_desc': 'Aplikasi pencatatan keuangan pribadi untuk mencatat pemasukan, pengeluaran, dompet, kategori, hutang/piutang, tabungan, dan riwayat transaksi secara detail.',
+                
+                'feature.kuropos1': 'Manajemen produk & inventori',
+                'feature.kuropos2': 'Produk satuan & produk timbang',
+                'feature.kuropos3': 'Integrasi timbangan IoT',
+                'feature.kuropos4': 'Scanner barcode & printer thermal',
+                'feature.kuropos5': 'Laporan penjualan lengkap',
+                'feature.kuropos6': 'Multi role pengguna',
+                'feature.kuro1': 'Catatan pemasukan & pengeluaran',
+                'feature.kuro2': 'Manajemen dompet & kategori',
+                'feature.kuro3': 'Hutang & piutang tracking',
+                'feature.kuro4': 'Target tabungan & ringkasan',
+                'feature.kuro5': 'Laporan keuangan menyeluruh',
+                'feature.kuro6': 'Riwayat transaksi lengkap',
+                
+                'services.tag': 'LAYANAN KAMI',
+                'services.title': 'Solusi Layanan Kustom',
+                'services.desc': 'Kami juga menyediakan layanan pembuatan aplikasi custom sesuai kebutuhan bisnis Anda yang spesifik.',
+                
+                'service1.title': 'Pembuatan Website',
+                'service1.item1': 'Company profile profesional',
+                'service1.item2': 'Landing page yang menarik',
+                'service1.item3': 'Website bisnis responsif',
+                'service1.item4': 'Katalog produk online',
+                'service1.item5': 'SEO-friendly',
+                
+                'service2.title': 'Aplikasi Web Custom',
+                'service2.item1': 'Dashboard admin powerful',
+                'service2.item2': 'Sistem manajemen bisnis',
+                'service2.item3': 'Aplikasi POS custom',
+                'service2.item4': 'Sistem laporan real-time',
+                'service2.item5': 'Monitoring & analytics',
+                
+                'service3.title': 'Aplikasi Mobile',
+                'service3.item1': 'Aplikasi Android native',
+                'service3.item2': 'Apps keuangan & accounting',
+                'service3.item3': 'Aplikasi bisnis internal',
+                'service3.item4': 'Customer service apps',
+                'service3.item5': 'Platform e-commerce',
+                
+                'service4.title': 'Integrasi Sistem & Hardware',
+                'service4.item1': 'Integrasi timbangan IoT',
+                'service4.item2': 'Koneksi MQTT & WebSocket',
+                'service4.item3': 'Printer thermal & scanner',
+                'service4.item4': 'API integrasi pihak ketiga',
+                'service4.item5': 'Real-time data synchronization',
+                
+                'contact.tag': 'HUBUNGI KAMI',
+                'contact.title': 'Mari Bekerja Sama',
+                'contact.desc': 'Hubungi kami untuk demo, konsultasi, atau permintaan fitur custom. Tim kami siap membantu merancang solusi yang sesuai kebutuhan bisnis Anda.',
+                'contact.whatsapp': 'WhatsApp',
+                'contact.email': 'Email',
+                'contact.location': 'Lokasi',
+                
+                'btn.learn': 'Pelajari Lebih Lanjut',
+                'btn.contact': 'Hubungi',
+                'btn.request_demo': 'Request Demo',
+                'btn.consult': '📞 Konsultasi Sekarang',
+                'btn.email': '✉️ Email Kami',
+                'btn.start_chat': 'Mulai Chat',
             },
             en: {
-                'nav.home':'Home', 'nav.about':'About', 'nav.products':'Products', 'nav.services':'Services', 'nav.contact':'Contact',
-                'tagline':'Building practical software for business and finance',
-                'hero.eyebrow':'Solutions for SMEs & shops', 'hero.title':'Digital Solutions for Business, POS, and Finance', 'hero.description':'KuroTech builds modern applications — KuroPOS for retailers and Kuro for personal finance — helping SMEs and individuals manage transactions, stock, and cashflow more neatly.', 'hero.cta_products':'View Products','hero.cta_contact':'Contact Us',
-                'spotlight.title':'Why KuroTech','spotlight.sub':'Practical, reliable solutions supporting hardware integrations such as IoT scales, thermal printers, and barcode scanners.','badge.hardware':'Hardware Integration','badge.usability':'Easy to use','badge.local':'Built for local businesses',
-                'about.title':'About KuroTech','about.long':'KuroTech is a software company focused on practical digital products for SMEs and individuals. We provide KuroPOS — a modern POS with hardware integrations — and Kuro — a personal finance app. We also build custom applications tailored to business needs.',
-                'products.title':'Our Products','products.kuropos_desc':'A modern POS app for shops and small markets that sells unit and weighted products. Real-time IoT scale integration for automatic weight input.','products.kuro_desc':'A personal finance app to track incomes, expenses, wallets, categories, debts/receivables, savings, and financial summaries.','products.learn':'Learn more','products.cta_contact':'Contact',
-                'services.title':'Our Services','services.lead':'KuroTech offers custom application development: company profiles, POS systems, admin dashboards, mobile apps, and IoT hardware integrations.',
-                'contact.title':'Contact','contact.lead':'Get in touch for demos, consultations, or custom feature requests. We help design solutions that fit your business needs.'
+                'hero.badge': 'Leading Digital Solutions',
+                'hero.title': 'Digital Solutions for Business, POS, and Finance',
+                'hero.description': 'KuroTech builds modern applications — KuroPOS for shops and Kuro for personal financial tracking — helping SMEs and individuals grow with practical and reliable technology.',
+                'hero.cta1': 'View Products',
+                'hero.cta2': 'Contact Us',
+                
+                'stats.products': 'Products',
+                'stats.services': 'Services',
+                'stats.commitment': 'Commitment',
+                
+                'about.tag': 'ABOUT US',
+                'about.title': 'Who We Are?',
+                'about.desc': 'KuroTech is a technology company committed to providing high-quality digital solutions for SMEs and individuals in Indonesia.',
+                'about.vision': 'Our Vision',
+                'about.vision_desc': 'To be a trusted partner in digital transformation of Indonesian businesses, providing practical solutions that are easy to use and affordable for all.',
+                'about.mission': 'Our Mission',
+                'about.mission_desc': 'Develop innovative applications and technology services, supporting SME growth through efficient and sustainable digitalization.',
+                
+                'feature1.title': 'Fast & Efficient',
+                'feature1.desc': 'Responsive and optimal solutions',
+                'feature2.title': 'Secure & Reliable',
+                'feature2.desc': 'Data security is our priority',
+                'feature3.title': 'Supportive & Responsive',
+                'feature3.desc': 'Team ready to help anytime',
+                'feature4.title': 'Integrated Solutions',
+                'feature4.desc': 'Perfect integration with your needs',
+                
+                'products.tag': 'FEATURED PRODUCTS',
+                'products.title': 'Our Product Solutions',
+                'products.desc': 'Two main products designed specifically to meet your business and personal finance needs.',
+                'products.kuropos_tag': 'POS • Retail • IoT',
+                'products.kuropos_desc': 'A modern POS application for shops and small markets that sell unit and weighted products with real-time hardware integration.',
+                'products.kuro_tag': 'Personal Finance',
+                'products.kuro_desc': 'A personal financial tracking app for recording income, expenses, wallets, categories, debts/credits, savings, and detailed transaction history.',
+                
+                'feature.kuropos1': 'Product & inventory management',
+                'feature.kuropos2': 'Unit and weighted products',
+                'feature.kuropos3': 'IoT scale integration',
+                'feature.kuropos4': 'Barcode scanner & thermal printer',
+                'feature.kuropos5': 'Complete sales reports',
+                'feature.kuropos6': 'Multi-role users',
+                'feature.kuro1': 'Income & expense tracking',
+                'feature.kuro2': 'Wallet & category management',
+                'feature.kuro3': 'Debt & credit tracking',
+                'feature.kuro4': 'Savings goals & summaries',
+                'feature.kuro5': 'Comprehensive financial reports',
+                'feature.kuro6': 'Complete transaction history',
+                
+                'services.tag': 'OUR SERVICES',
+                'services.title': 'Custom Service Solutions',
+                'services.desc': 'We also provide custom application development services tailored to your specific business needs.',
+                
+                'service1.title': 'Website Development',
+                'service1.item1': 'Professional company profiles',
+                'service1.item2': 'Attractive landing pages',
+                'service1.item3': 'Responsive business websites',
+                'service1.item4': 'Online product catalogs',
+                'service1.item5': 'SEO-friendly',
+                
+                'service2.title': 'Custom Web Applications',
+                'service2.item1': 'Powerful admin dashboards',
+                'service2.item2': 'Business management systems',
+                'service2.item3': 'Custom POS applications',
+                'service2.item4': 'Real-time reporting systems',
+                'service2.item5': 'Monitoring & analytics',
+                
+                'service3.title': 'Mobile Applications',
+                'service3.item1': 'Native Android apps',
+                'service3.item2': 'Finance & accounting apps',
+                'service3.item3': 'Internal business apps',
+                'service3.item4': 'Customer service apps',
+                'service3.item5': 'E-commerce platforms',
+                
+                'service4.title': 'System & Hardware Integration',
+                'service4.item1': 'IoT scale integration',
+                'service4.item2': 'MQTT & WebSocket connections',
+                'service4.item3': 'Thermal printer & scanner',
+                'service4.item4': 'Third-party API integration',
+                'service4.item5': 'Real-time data synchronization',
+                
+                'contact.tag': 'CONTACT US',
+                'contact.title': 'Let\'s Work Together',
+                'contact.desc': 'Contact us for demos, consultations, or custom feature requests. Our team is ready to help design solutions that fit your business needs.',
+                'contact.whatsapp': 'WhatsApp',
+                'contact.email': 'Email',
+                'contact.location': 'Location',
+                
+                'btn.learn': 'Learn More',
+                'btn.contact': 'Contact',
+                'btn.request_demo': 'Request Demo',
+                'btn.consult': '📞 Consult Now',
+                'btn.email': '✉️ Email Us',
+                'btn.start_chat': 'Start Chat',
             }
         };
 
-        function applyLocale(lang){
-            document.querySelectorAll('[data-i18n]').forEach(el=>{
+        // Apply i18n translations
+        function applyLocale(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if(i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
+                if (i18n[lang] && i18n[lang][key]) {
+                    el.textContent = i18n[lang][key];
+                }
             });
-            document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.getAttribute('data-lang')===lang));
-            document.documentElement.lang = (lang==='id')? 'id' : 'en';
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferred-lang', lang);
         }
 
-        document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click', ()=>{
-            applyLocale(btn.getAttribute('data-lang'));
-        }));
+        // Language switcher
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyLocale(btn.getAttribute('data-lang'));
+            });
+        });
 
-        // Init
-        applyLocale('id');
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const element = document.querySelector(href);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // Initialize
+        const preferredLang = localStorage.getItem('preferred-lang') || 'id';
+        applyLocale(preferredLang);
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
