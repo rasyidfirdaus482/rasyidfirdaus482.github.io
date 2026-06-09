@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KuroTech — Modern POS & personal finance apps for SMEs. Cloud-ready, secure, and built for growth. KuroPOS and Kuro with AI finance assistant.">
+    <!--
+      Keterangan: Untuk mengganti contact/email/phone, cari komentar "<!-- CONTACT_PLACEHOLDERS -->" di file ini.
+      Letakkan asset (logo, screenshot) di folder: assets/
+      Nama file rekomendasi (letakkan di repo root assets/):
+        - assets/logo.svg
+        - assets/kuropos-screenshot.png
+        - assets/kuro-screenshot.png
+        - assets/kuropos-thumb.png
+        - assets/kuro-thumb.png
+        - assets/service-web.png
+        - assets/service-app.png
+        - assets/hardware-integration.png
+        - assets/og-image.png
+    -->
+    <meta name="description" content="KuroTech — Solusi digital untuk POS, transaksi, dan pencatatan keuangan bagi UMKM dan individu. KuroPOS dan Kuro, solusi praktis untuk toko dan keuangan pribadi.">
     <title>KuroTech - Solusi Digital POS dan Keuangan</title>
     <style>
-        /* Reset & variables */
+        /* Basic reset & vars */
         *{box-sizing:border-box;margin:0;padding:0}
         :root{
             --bg-1:#05060a;--bg-2:#0f1724;--card:#0f1a2b;
-            --primary:#00d9ff;--primary-2:#7dd3fc;--accent:#a855f7;
-            --muted:#94a3b8;--text:#e6eef8;--glass:rgba(255,255,255,0.04);
+            --primary:#4f46e5;--accent:#06b6d4;--muted:#94a3b8;--text:#e6eef8;
             --radius:12px;--maxw:1200px
         }
-        body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--text);line-height:1.6;overflow-x:hidden}
+        body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--text);-webkit-font-smoothing:antialiased}
         .container{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem}
-
-        /* NAV */
         nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(10,12,20,0.6),rgba(10,12,20,0.3));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
         nav .inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
         .brand{display:flex;align-items:center;gap:.75rem}
-        .logo{font-weight:800;color:var(--primary);font-size:1.1rem;letter-spacing:2px}
-        .tagline{font-size:.8rem;color:var(--muted)}
-        ul.nav{display:flex;gap:1.25rem;list-style:none;align-items:center}
+        .logo{font-weight:800;color:var(--primary);font-size:1.05rem;letter-spacing:1px}
+        .tagline{font-size:.78rem;color:var(--muted)}
+        ul.nav{display:flex;gap:1rem;list-style:none;align-items:center}
         ul.nav a{color:var(--text);text-decoration:none;font-weight:600;font-size:.95rem}
-        ul.nav a:hover{color:var(--primary-2)}
         .lang-switcher{display:flex;gap:.5rem;border-left:1px solid rgba(255,255,255,0.03);padding-left:1rem;margin-left:1rem}
         .lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:.35rem .6rem;border-radius:6px;color:var(--text);cursor:pointer;font-weight:700}
-        .lang-btn.active{background:var(--primary);color:#041022;border-color:var(--primary)}
+        .lang-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 
-        /* HERO */
         .hero{min-height:78vh;display:flex;align-items:center}
         .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center}
         .eyebrow{display:inline-block;background:linear-gradient(90deg,var(--primary),var(--accent));padding:.3rem .6rem;border-radius:999px;color:#041022;font-weight:700;margin-bottom:1rem}
@@ -38,47 +47,37 @@
         p.lead{color:var(--muted);max-width:70ch;margin-bottom:1.2rem}
         .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
         .btn{padding:.75rem 1.6rem;border-radius:10px;border:none;cursor:pointer;font-weight:700}
-        .btn-primary{background:linear-gradient(90deg,var(--primary),var(--primary-2));color:#041022}
+        .btn-primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:#041022}
         .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
 
-        /* spotlight card on right */
-        .spotlight{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:1.25rem;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+        .spotlight{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:1.25rem;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03)}
         .spot-title{font-weight:700;margin-bottom:.5rem}
         .spot-sub{color:var(--muted);font-size:.95rem;margin-bottom:.8rem}
-        .badge{display:inline-block;padding:.25rem .6rem;border-radius:8px;background:rgba(0,217,255,0.08);color:var(--primary);font-weight:700;font-size:.8rem}
+        .badge{display:inline-block;padding:.25rem .6rem;border-radius:8px;background:rgba(79,70,229,0.08);color:var(--primary);font-weight:700;font-size:.8rem}
 
-        /* sections */
         section{padding:4.5rem 0;border-bottom:1px solid rgba(255,255,255,0.02)}
         section h2{font-size:1.6rem;margin-bottom:1.2rem}
         .grid{display:grid;gap:1.5rem}
 
-        /* products */
         .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
         .card{background:var(--card);padding:1.2rem;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-        .card h3{margin-bottom:.5rem}
         .muted{color:var(--muted);font-size:.95rem}
         .features-list{list-style:none;padding-left:0;margin-top:.8rem}
         .features-list li{padding:.45rem 0;color:var(--muted)}
 
-        /* AI chat mockup */
-        .chat-mock{background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.02));padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.03);height:260px;display:flex;flex-direction:column}
-        .msg{max-width:75%;padding:.5rem .75rem;border-radius:10px;margin-bottom:.5rem;font-size:.95rem}
-        .msg.user{align-self:flex-end;background:linear-gradient(90deg,var(--primary),var(--primary-2));color:#041022}
-        .msg.bot{align-self:flex-start;background:rgba(255,255,255,0.03);color:var(--text)}
-        .chat-input{margin-top:auto;display:flex;gap:.5rem}
-        .chat-input input{flex:1;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
-        .chat-input button{padding:.55rem .9rem;border-radius:8px;background:var(--primary);color:#041022;border:none}
+        .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 
-        /* cloud readiness section */
-        .pill{display:inline-block;background:rgba(255,255,255,0.02);padding:.35rem .6rem;border-radius:999px;color:var(--muted);font-weight:700;border:1px solid rgba(255,255,255,0.02)}
-        .cloud-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+        .project-image{height:180px;border-radius:10px;overflow:hidden;background:linear-gradient(90deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center}
+        .project-image img{width:100%;height:100%;object-fit:cover;display:block}
 
-        /* footer */
-        footer{padding:2.5rem 0;color:var(--muted)}
+        .contact-content{text-align:center;max-width:700px;margin:0 auto}
+        .contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem}
+        .contact-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--text);text-decoration:none}
 
-        /* responsive */
-        @media (max-width:980px){.hero-grid{grid-template-columns:1fr 1fr}.spotlight{order:2}.hero-grid{grid-template-columns:1fr}.spotlight{margin-top:1rem}}
-        @media (max-width:640px){h1{font-size:1.6rem}.eyebrow{display:block}.lang-switcher{display:none}}
+        footer{padding:2.5rem 0;color:var(--muted);text-align:center}
+
+        @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.spotlight{order:2;margin-top:1rem}}
+        @media (max-width:640px){h1{font-size:1.6rem}.lang-switcher{display:none}}
     </style>
 </head>
 <body>
@@ -87,7 +86,7 @@
             <div class="brand">
                 <div>
                     <div class="logo">KuroTech</div>
-                    <div class="tagline">Practical software for SMEs & finance</div>
+                    <div class="tagline" data-i18n="tagline">Building practical software for business and finance</div>
                 </div>
             </div>
 
@@ -96,267 +95,216 @@
                 <li><a href="#about" data-i18n="nav.about">Tentang</a></li>
                 <li><a href="#products" data-i18n="nav.products">Produk</a></li>
                 <li><a href="#services" data-i18n="nav.services">Layanan</a></li>
-                <li><a href="#cloud" data-i18n="nav.cloud">Cloud</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Kontak</a></li>
             </ul>
 
-            <div class="lang-switcher">
-                <button class="lang-btn" data-lang="id">ID</button>
-                <button class="lang-btn active" data-lang="en">EN</button>
+            <div class="lang-switcher" role="navigation" aria-label="Language switcher">
+                <button class="lang-btn active" data-lang="id">ID</button>
+                <button class="lang-btn" data-lang="en">EN</button>
             </div>
         </div>
     </nav>
 
     <main class="container">
+        <!-- HERO -->
         <section id="home" class="hero">
             <div class="hero-grid">
                 <div>
-                    <span class="eyebrow">Startup-grade • Cloud-ready</span>
-                    <h1 data-i18n="hero.title">Digital Solutions for Business, POS, and Finance</h1>
-                    <p class="lead" data-i18n="hero.description">KuroTech builds modern applications — KuroPOS for retailers and Kuro for personal finance — designed for growth: reliable, scalable, and built with security and operational excellence in mind.</p>
+                    <span class="eyebrow" data-i18n="hero.eyebrow">Solusi untuk UMKM & toko</span>
+                    <h1 data-i18n="hero.title">Solusi Digital untuk Bisnis, POS, dan Keuangan</h1>
+                    <p class="lead" data-i18n="hero.description">KuroTech membangun aplikasi modern — KuroPOS untuk toko dan Kuro untuk pencatatan keuangan pribadi — membantu UMKM dan individu mengelola transaksi, stok, dan arus kas dengan lebih rapi.</p>
                     <div class="cta-row">
-                        <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta_products">View Products</button>
-                        <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta_contact">Request Demo</button>
-                        <span class="pill" data-i18n="hero.commitment">Committed to long-term support & security</span>
+                        <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" data-i18n="hero.cta_products">Lihat Produk</button>
+                        <a class="btn btn-ghost" href="mailto:tech@kuroposku.me" data-i18n="hero.cta_contact">Hubungi Kami</a>
                     </div>
                 </div>
 
-                <aside class="spotlight">
-                    <div class="spot-title" data-i18n="spotlight.title">Why KuroTech</div>
-                    <div class="spot-sub" data-i18n="spotlight.sub">Practical, secure, and cloud-first. Built for SMEs with integrations to hardware and modern observability.</div>
+                <aside class="spotlight" aria-hidden="true">
+                    <div class="spot-title" data-i18n="spotlight.title">Kenapa memilih KuroTech</div>
+                    <div class="spot-sub" data-i18n="spotlight.sub">Solusi praktis untuk toko dan keuangan, mendukung integrasi hardware seperti timbangan IoT, printer thermal, dan scanner barcode.</div>
                     <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
-                        <div class="badge">AI Assistant</div>
-                        <div class="badge">IoT Integration</div>
-                        <div class="badge">Cloud-ready</div>
+                        <div class="badge" data-i18n="badge.hardware">Integrasi Hardware</div>
+                        <div class="badge" data-i18n="badge.usability">Mudah digunakan</div>
+                        <div class="badge" data-i18n="badge.local">Dibuat untuk kebutuhan lokal</div>
                     </div>
                 </aside>
             </div>
         </section>
 
+        <!-- ABOUT -->
         <section id="about">
             <div class="grid">
-                <h2 data-i18n="about.title">About KuroTech</h2>
-                <p class="muted" data-i18n="about.long">KuroTech is a forward-looking software company focused on delivering practical digital products for small businesses and individuals. We combine simple design with robust engineering practices to deliver software that businesses can rely on when scaling. Our mission: help SMEs run better and individuals manage money smarter.</p>
+                <h2 data-i18n="about.title">Tentang KuroTech</h2>
+                <p class="muted" data-i18n="about.long">KuroTech adalah perusahaan teknologi yang fokus pada pembuatan produk digital untuk UMKM, toko, dan individu. Kami menghadirkan KuroPOS — aplikasi POS modern dengan integrasi perangkat — serta Kuro — aplikasi pencatatan keuangan pribadi. Selain produk, kami juga menerima jasa pembuatan aplikasi custom sesuai kebutuhan bisnis.</p>
             </div>
         </section>
 
+        <!-- PRODUCTS -->
         <section id="products">
-            <h2 data-i18n="products.title">Our Products</h2>
+            <h2 data-i18n="products.title">Produk Kami</h2>
             <div class="products-grid">
                 <div class="card">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem">
                         <h3>KuroPOS</h3>
-                        <div class="pill">Retail • IoT</div>
+                        <div class="pill" data-i18n="products.kuropos_tag">POS • Retail • IoT</div>
                     </div>
-                    <p class="muted" data-i18n="products.kuropos_desc">Modern POS designed for small retailers and markets with fast transactions and hardware integrations.</p>
-                    <ul class="features-list">
-                        <li data-i18n="products.kuropos_f1">Unit & weighted product management</li>
-                        <li data-i18n="products.kuropos_f2">Fast, accurate sales flows</li>
-                        <li data-i18n="products.kuropos_f3">Real-time IoT scale & MQTT/WebSocket</li>
-                        <li data-i18n="products.kuropos_f4">Thermal printer & barcode scanner</li>
+                    <div class="project-image" role="img" aria-label="KuroPOS screenshot">
+                        <img src="assets/kuropos-screenshot.png" alt="KuroPOS — aplikasi POS modern untuk UMKM">
+                    </div>
+                    <p class="muted" data-i18n="products.kuropos_desc">Aplikasi POS modern untuk toko, minimarket, dan UMKM yang menjual produk satuan maupun produk timbang. Integrasi real-time timbangan IoT untuk input berat otomatis.</p>
+                    <ul class="features-list" id="kuropos-features">
+                        <li>Manajemen produk</li>
+                        <li>Produk satuan & produk timbang</li>
+                        <li>Integrasi timbangan IoT (MQTT / WebSocket)</li>
+                        <li>Scanner barcode & printer thermal</li>
+                        <li>Laporan penjualan, pengeluaran, dan stok</li>
+                        <li>Multi role pengguna</li>
                     </ul>
                     <div style="display:flex;gap:.6rem;margin-top:1rem">
-                        <button class="btn btn-primary" onclick="document.getElementById('kuropos-features').scrollIntoView({behavior:'smooth'})" data-i18n="products.learn">Learn more</button>
-                        <button class="btn btn-ghost" onclick="alert('Contact sales via WhatsApp or Email')" data-i18n="products.cta_contact">Contact Sales</button>
+                        <a class="btn btn-primary" href="#contact" data-i18n="products.learn">Pelajari KuroPOS</a>
+                        <a class="btn btn-ghost" href="mailto:tech@kuroposku.me" data-i18n="products.cta_contact">Hubungi Sales</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem">
                         <h3>Kuro</h3>
-                        <div class="pill">Personal Finance • AI</div>
+                        <div class="pill" data-i18n="products.kuro_tag">Keuangan Pribadi</div>
                     </div>
-                    <p class="muted" data-i18n="products.kuro_desc">Personal finance app to track income, expenses, goals — now with an AI Finance Assistant to help analyze and advise.</p>
-                    <ul class="features-list">
-                        <li data-i18n="products.kuro_f1">Income & expense tracking</li>
-                        <li data-i18n="products.kuro_f2">Wallets, categories, debt/receivables</li>
-                        <li data-i18n="products.kuro_f3">Savings goals & summaries</li>
-                        <li data-i18n="products.kuro_f4">AI Finance Assistant (chat) for budgeting & forecasting</li>
+                    <div class="project-image" role="img" aria-label="Kuro screenshot">
+                        <img src="assets/kuro-screenshot.png" alt="Kuro — aplikasi pencatatan keuangan pribadi">
+                    </div>
+                    <p class="muted" data-i18n="products.kuro_desc">Aplikasi pencatatan keuangan pribadi untuk mencatat pemasukan, pengeluaran, dompet, kategori, hutang/piutang, tabungan, dan ringkasan keuangan.</p>
+                    <ul class="features-list" id="kuro-features">
+                        <li>Catatan pemasukan & pengeluaran</li>
+                        <li>Dompet dan kategori</li>
+                        <li>Hutang & piutang</li>
+                        <li>Target tabungan & ringkasan keuangan</li>
+                        <li>Riwayat transaksi</li>
                     </ul>
                     <div style="display:flex;gap:.6rem;margin-top:1rem">
-                        <button class="btn btn-primary" onclick="document.getElementById('kuro-features').scrollIntoView({behavior:'smooth'})" data-i18n="products.learn">Learn more</button>
-                        <button class="btn btn-ghost" onclick="alert('Request a demo for Kuro')" data-i18n="products.cta_contact">Request Demo</button>
+                        <a class="btn btn-primary" href="#contact" data-i18n="products.learn">Pelajari Kuro</a>
+                        <a class="btn btn-ghost" href="mailto:tech@kuroposku.me" data-i18n="products.cta_contact">Request Demo</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="kuro-features">
-            <h2 data-i18n="features_kuro.title">Kuro Features</h2>
-            <div class="grid">
-                <div style="display:grid;grid-template-columns:1fr 320px;gap:1rem;align-items:start">
-                    <div class="card">
-                        <h3 data-i18n="features_kuro.header">Personal finance tools with smart insights</h3>
-                        <p class="muted" data-i18n="features_kuro.desc">Track transactions, manage wallets, keep debts in check, and reach savings goals. Kuro now includes an AI-powered assistant to help interpret your data and suggest actions.</p>
-                        <ul class="features-list">
-                            <li data-i18n="features_kuro.f1">Income records</li>
-                            <li data-i18n="features_kuro.f2">Expense tracking</li>
-                            <li data-i18n="features_kuro.f3">Wallet management</li>
-                            <li data-i18n="features_kuro.f5">Debt & receivables</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <div class="card chat-mock" aria-hidden="true">
-                            <div class="msg bot">Hi — I'm Kuro, your finance assistant. I can help summarize spending and set saving targets.</div>
-                            <div class="msg user">How much did I spend on groceries this month?</div>
-                            <div class="msg bot">You spent Rp 1.2M on groceries. Consider a 10% saving plan to meet your goals.</div>
-                            <div class="chat-input">
-                                <input placeholder="Type a question to the assistant (demo)" aria-label="chat-input" />
-                                <button disabled>Send</button>
-                            </div>
-                        </div>
-                        <div style="margin-top:.6rem;color:var(--muted);font-size:.9rem">*AI assistant shown as demo. Full integration available on request.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="kuropos-features">
-            <h2 data-i18n="features_kuropos.title">KuroPOS Features</h2>
-            <div class="products-grid">
-                <div class="card">
-                    <h3 data-i18n="features_kuropos.f1_title">Product & Inventory</h3>
-                    <p class="muted">Manage unit and weighted products, real-time stock adjustments, and reporting.</p>
-                </div>
-                <div class="card">
-                    <h3 data-i18n="features_kuropos.f2_title">IoT & Hardware</h3>
-                    <p class="muted">MQTT/WebSocket scale integration, barcode scanners, and thermal printing support.</p>
-                </div>
-                <div class="card">
-                    <h3 data-i18n="features_kuropos.f4_title">Reporting & Roles</h3>
-                    <p class="muted">Sales, expenses, and role-based access for cashier, manager, and admin.</p>
-                </div>
-            </div>
-        </section>
-
+        <!-- Services -->
         <section id="services">
-            <h2 data-i18n="services.title">Our Services</h2>
-            <div class="products-grid">
+            <h2 data-i18n="services.title">Layanan Kami</h2>
+            <p class="muted" data-i18n="services.lead">KuroTech juga melayani pembuatan aplikasi custom untuk kebutuhan bisnis: website company profile, aplikasi POS, dashboard admin, aplikasi mobile, hingga integrasi perangkat IoT dan hardware pendukung.</p>
+            <div class="services-grid">
                 <div class="card">
-                    <h3 data-i18n="services.web_title">Website Development</h3>
-                    <p class="muted">Company profiles, landing pages, and product catalogs that convert.</p>
+                    <h3>Pembuatan Website</h3>
+                    <ul class="features-list">
+                        <li>Company profile</li>
+                        <li>Landing page</li>
+                        <li>Website bisnis</li>
+                        <li>Website katalog produk</li>
+                    </ul>
                 </div>
                 <div class="card">
-                    <h3 data-i18n="services.webapp_title">Web Applications</h3>
-                    <p class="muted">Admin dashboards, custom POS, and reporting systems tailored for growth.</p>
+                    <h3>Pembuatan Aplikasi Web</h3>
+                    <ul class="features-list">
+                        <li>Dashboard admin</li>
+                        <li>Sistem manajemen bisnis</li>
+                        <li>Aplikasi POS custom</li>
+                        <li>Sistem laporan & monitoring</li>
+                    </ul>
                 </div>
                 <div class="card">
-                    <h3 data-i18n="services.mobile_title">Mobile Apps</h3>
-                    <p class="muted">Android & cross-platform apps for users and internal teams.</p>
+                    <h3>Pembuatan Aplikasi Mobile</h3>
+                    <ul class="features-list">
+                        <li>Aplikasi Android</li>
+                        <li>Aplikasi pencatatan keuangan</li>
+                        <li>Aplikasi bisnis internal</li>
+                        <li>Aplikasi customer service/order sederhana</li>
+                    </ul>
                 </div>
                 <div class="card">
-                    <h3 data-i18n="services.iot_title">System & Hardware Integration</h3>
-                    <p class="muted">We integrate scales, printers, scanners, and third-party APIs.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="cloud">
-            <h2>Cloud Readiness & Security</h2>
-            <p class="muted">KuroTech products are built with cloud-native principles and operational best practices, making them suitable for deployment on AWS and other reputable cloud providers. We focus on:</p>
-            <div class="cloud-grid" style="margin-top:1rem">
-                <div class="card">
-                    <strong>Scalability</strong>
-                    <p class="muted">Stateless services, horizontal scaling, and async messaging ready for growth.</p>
-                </div>
-                <div class="card">
-                    <strong>Security & Data Protection</strong>
-                    <p class="muted">Encryption in transit, secure key handling, and privacy-by-design principles.</p>
-                </div>
-                <div class="card">
-                    <strong>Observability</strong>
-                    <p class="muted">Logging, metrics, and alerting-ready to support production operations.</p>
-                </div>
-                <div class="card">
-                    <strong>Compliance Support</strong>
-                    <p class="muted">We provide guidance for meeting common platform program requirements (cloud readiness, support, and security) for startup programs.</p>
+                    <h3>Integrasi Sistem & Hardware</h3>
+                    <ul class="features-list">
+                        <li>Integrasi timbangan IoT</li>
+                        <li>Integrasi MQTT / WebSocket</li>
+                        <li>Integrasi printer thermal & scanner barcode</li>
+                        <li>Integrasi API pihak ketiga</li>
+                    </ul>
                 </div>
             </div>
             <div style="margin-top:1rem">
-                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Talk about AWS readiness</button>
+                <a class="btn btn-primary" href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer">Konsultasi Sekarang</a>
+                <a class="btn btn-ghost" href="mailto:tech@kuroposku.me">Email Kami</a>
             </div>
         </section>
 
-        <section id="why">
-            <h2 data-i18n="why.title">Why Choose KuroTech?</h2>
-            <div class="products-grid">
-                <div class="card"><strong>Product-market fit focus</strong><p class="muted">Built for real daily operations of SMEs.</p></div>
-                <div class="card"><strong>Hardware integrations</strong><p class="muted">Scale & weight-aware POS flows for real-world stores.</p></div>
-                <div class="card"><strong>AI Assistants</strong><p class="muted">Practical AI features to help users act on financial data.</p></div>
-                <div class="card"><strong>Long-term support</strong><p class="muted">Roadmap-driven development and SLA options.</p></div>
-            </div>
-        </section>
-
+        <!-- Contact -->
         <section id="contact">
-            <h2 data-i18n="contact.title">Contact Us</h2>
-            <div class="card">
-                <p class="muted">For product demos, partnerships, or AWS readiness consultation, reach out:</p>
-                <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem">
-                    <a class="btn btn-primary" href="https://wa.me/6283167961562" target="_blank">WhatsApp</a>
-                    <a class="btn btn-ghost" href="mailto:kurotech@kuroposku.me">Email</a>
+            <h2 data-i18n="contact.title">Kontak</h2>
+            <div class="contact-content">
+                <p class="muted" data-i18n="contact.lead">Hubungi kami untuk demo, konsultasi, atau permintaan fitur custom. Kami akan membantu merancang solusi yang sesuai kebutuhan bisnis Anda.</p>
+
+                <!-- CONTACT_PLACEHOLDERS: Ganti nomor dan email di sini jika perlu -->
+                <div class="contact-links" aria-label="contact">
+                    <a class="contact-link" href="https://wa.me/6283167961562" target="_blank" rel="noopener noreferrer">WhatsApp: +62 831-6796-1562</a>
+                    <a class="contact-link" href="mailto:tech@kuroposku.me">Email: tech@kuroposku.me</a>
+                    <span class="contact-link">Lokasi: Indonesia</span>
                 </div>
-                <p style="margin-top:1rem;color:var(--muted)">Note: AI Finance Assistant is available as an included feature for Kuro; server-side integration required for full functionality.</p>
+                <p class="muted" style="margin-top:1rem">Catatan: ini adalah situs statis GitHub Pages — tidak ada form backend. Gunakan WhatsApp atau email untuk komunikasi.</p>
             </div>
         </section>
+
     </main>
 
     <footer>
         <div class="container">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
-                <div>
-                    <div style="font-weight:800">KuroTech</div>
-                    <div style="color:var(--muted)">Building practical software for business and finance.</div>
-                </div>
-                <div style="color:var(--muted)">© <span id="yr"></span> KuroTech</div>
-            </div>
+            <div style="margin-bottom:.6rem">KuroTech — Building practical software for business and finance.</div>
+            <div class="muted">Produk: KuroPOS · Kuro</div>
+            <div style="margin-top:.8rem">&copy; <span id="year"></span> KuroTech. All rights reserved.</div>
         </div>
     </footer>
 
     <script>
-        // set year
-        document.getElementById('yr').textContent=new Date().getFullYear();
+        // Simple i18n using data-i18n attributes. Supports 'id' and 'en'.
+        const i18n = {
+            id: {
+                'nav.home':'Home', 'nav.about':'Tentang', 'nav.products':'Produk', 'nav.services':'Layanan', 'nav.contact':'Kontak',
+                'tagline':'Building practical software for business and finance',
+                'hero.eyebrow':'Solusi untuk UMKM & toko', 'hero.title':'Solusi Digital untuk Bisnis, POS, dan Keuangan', 'hero.description':'KuroTech membangun aplikasi modern — KuroPOS untuk toko dan Kuro untuk pencatatan keuangan pribadi — membantu UMKM dan individu mengelola transaksi, stok, dan arus kas dengan lebih rapi.', 'hero.cta_products':'Lihat Produk','hero.cta_contact':'Hubungi Kami',
+                'spotlight.title':'Kenapa memilih KuroTech','spotlight.sub':'Solusi praktis untuk toko dan keuangan, mendukung integrasi hardware seperti timbangan IoT, printer thermal, dan scanner barcode.','badge.hardware':'Integrasi Hardware','badge.usability':'Mudah digunakan','badge.local':'Dibuat untuk kebutuhan lokal',
+                'about.title':'Tentang KuroTech','about.long':'KuroTech adalah perusahaan teknologi yang fokus pada pembuatan produk digital untuk UMKM, toko, dan individu. Kami menghadirkan KuroPOS — aplikasi POS modern dengan integrasi perangkat — serta Kuro — aplikasi pencatatan keuangan pribadi. Selain produk, kami juga menerima jasa pembuatan aplikasi custom sesuai kebutuhan bisnis.',
+                'products.title':'Produk Kami','products.kuropos_desc':'Aplikasi POS modern untuk toko, minimarket, dan UMKM yang menjual produk satuan maupun produk timbang. Integrasi real-time timbangan IoT untuk input berat otomatis.','products.kuro_desc':'Aplikasi pencatatan keuangan pribadi untuk mencatat pemasukan, pengeluaran, dompet, kategori, hutang/piutang, tabungan, dan ringkasan keuangan.','products.learn':'Pelajari','products.cta_contact':'Hubungi',
+                'services.title':'Layanan Kami','services.lead':'KuroTech juga melayani pembuatan aplikasi custom untuk kebutuhan bisnis, mulai dari website company profile, aplikasi POS, dashboard admin, hingga integrasi perangkat IoT dan hardware pendukung.',
+                'contact.title':'Kontak','contact.lead':'Hubungi kami untuk demo, konsultasi, atau permintaan fitur custom. Kami akan membantu merancang solusi yang sesuai kebutuhan bisnis Anda.'
+            },
+            en: {
+                'nav.home':'Home', 'nav.about':'About', 'nav.products':'Products', 'nav.services':'Services', 'nav.contact':'Contact',
+                'tagline':'Building practical software for business and finance',
+                'hero.eyebrow':'Solutions for SMEs & shops', 'hero.title':'Digital Solutions for Business, POS, and Finance', 'hero.description':'KuroTech builds modern applications — KuroPOS for retailers and Kuro for personal finance — helping SMEs and individuals manage transactions, stock, and cashflow more neatly.', 'hero.cta_products':'View Products','hero.cta_contact':'Contact Us',
+                'spotlight.title':'Why KuroTech','spotlight.sub':'Practical, reliable solutions supporting hardware integrations such as IoT scales, thermal printers, and barcode scanners.','badge.hardware':'Hardware Integration','badge.usability':'Easy to use','badge.local':'Built for local businesses',
+                'about.title':'About KuroTech','about.long':'KuroTech is a software company focused on practical digital products for SMEs and individuals. We provide KuroPOS — a modern POS with hardware integrations — and Kuro — a personal finance app. We also build custom applications tailored to business needs.',
+                'products.title':'Our Products','products.kuropos_desc':'A modern POS app for shops and small markets that sells unit and weighted products. Real-time IoT scale integration for automatic weight input.','products.kuro_desc':'A personal finance app to track incomes, expenses, wallets, categories, debts/receivables, savings, and financial summaries.','products.learn':'Learn more','products.cta_contact':'Contact',
+                'services.title':'Our Services','services.lead':'KuroTech offers custom application development: company profiles, POS systems, admin dashboards, mobile apps, and IoT hardware integrations.',
+                'contact.title':'Contact','contact.lead':'Get in touch for demos, consultations, or custom feature requests. We help design solutions that fit your business needs.'
+            }
+        };
 
-        // Keep existing translations and language switcher behavior
-        const translations = window.translations || {};
-        // If translations object exists (from previous build) merge minimal keys, otherwise keep English defaults already in HTML
-
-        // language switcher simple handling
-        document.querySelectorAll('.lang-btn').forEach(btn=>{
-            btn.addEventListener('click',()=>{
-                document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-                btn.classList.add('active');
-                const lang=btn.getAttribute('data-lang');
-                // If translations object present, map keys (fallback to HTML content)
-                if(window.translations && window.translations[lang]){
-                    document.querySelectorAll('[data-i18n]').forEach(el=>{
-                        const key=el.getAttribute('data-i18n');
-                        if(window.translations[lang][key]) el.textContent=window.translations[lang][key];
-                    });
-                }
-                // set html lang
-                document.documentElement.lang = lang;
-                localStorage.setItem('preferredLang', lang);
+        function applyLocale(lang){
+            document.querySelectorAll('[data-i18n]').forEach(el=>{
+                const key = el.getAttribute('data-i18n');
+                if(i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
             });
-        });
-        // restore preferred lang if any
-        const pref = localStorage.getItem('preferredLang');
-        if(pref){
-            const btn=document.querySelector(`.lang-btn[data-lang="${pref}"]`);
-            if(btn) btn.click();
+            document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.getAttribute('data-lang')===lang));
+            document.documentElement.lang = (lang==='id')? 'id' : 'en';
         }
 
-        // Smooth scroll already handled by buttons; add anchor behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-            anchor.addEventListener('click',function(e){
-                const href=this.getAttribute('href');
-                if(href.startsWith('#')){
-                    e.preventDefault();
-                    const t=document.querySelector(href);
-                    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
-                }
-            });
-        });
+        document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click', ()=>{
+            applyLocale(btn.getAttribute('data-lang'));
+        }));
+
+        // Init
+        applyLocale('id');
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
