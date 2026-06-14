@@ -1,8 +1,8 @@
 const translations = {
   id: {
     meta: {
-      title: "KuroTech — POS, Keuangan, dan Aplikasi Custom",
-      description: "KuroTech membantu UMKM membangun sistem POS, integrasi timbangan IoT, aplikasi pencatatan keuangan, dan solusi aplikasi custom yang siap digunakan."
+      title: "Kuroposku — POS, Keuangan, dan Aplikasi Custom",
+      description: "Kuroposku membantu UMKM membangun sistem POS, integrasi timbangan IoT, aplikasi pencatatan keuangan, dan solusi aplikasi custom yang siap digunakan."
     },
     accessibility: {
       skip: "Lewati ke konten utama"
@@ -23,7 +23,7 @@ const translations = {
     hero: {
       eyebrow: "KuroPOS • Kuro • Custom Software",
       title: "Sistem digital yang rapi untuk toko, transaksi, dan pencatatan keuangan.",
-      lead: "KuroTech membantu UMKM membangun operasional yang lebih terukur: POS untuk penjualan, integrasi timbangan IoT untuk produk timbang, dan aplikasi keuangan untuk pencatatan harian.",
+      lead: "Kuroposku membantu UMKM membangun operasional yang lebih terukur: POS untuk penjualan, integrasi timbangan IoT untuk produk timbang, dan aplikasi keuangan untuk pencatatan harian.",
       primaryCta: "Lihat Solusi",
       secondaryCta: "Chat WhatsApp",
       metric1: { value: "2", label: "produk inti" },
@@ -73,7 +73,7 @@ const translations = {
       c1: { title: "Integrasi perangkat", desc: "Timbangan IoT, scanner barcode, printer thermal, dan perangkat kasir lain dapat disiapkan sesuai kebutuhan operasional." },
       c2: { title: "Alur bisnis fleksibel", desc: "Produk, cabang, role pengguna, harga, stok, dan laporan dapat disesuaikan dengan cara bisnis Anda berjalan." },
       c3: { title: "Siap untuk web statis", desc: "Company profile ini tetap berjalan di GitHub Pages tanpa build tool, database, atau server tambahan." },
-      c4: { title: "Aplikasi custom", desc: "Selain produk internal, KuroTech juga melayani pembuatan aplikasi web, desktop, mobile, dan integrasi sistem." }
+      c4: { title: "Aplikasi custom", desc: "Selain produk internal, Kuroposku juga melayani pembuatan aplikasi web, desktop, mobile, dan integrasi sistem." }
     },
     process: {
       eyebrow: "Cara kerja",
@@ -86,7 +86,7 @@ const translations = {
     },
     services: {
       eyebrow: "Layanan",
-      title: "Yang bisa KuroTech bantu.",
+      title: "Yang bisa Kuroposku bantu.",
       lead: "Pilih produk siap pakai, minta penyesuaian, atau bangun sistem baru dari awal.",
       s1: { title: "Implementasi KuroPOS", desc: "Setup produk, kasir, cabang, perangkat POS, dan integrasi timbangan untuk toko." },
       s2: { title: "Aplikasi keuangan Kuro", desc: "Solusi pencatatan keuangan yang lebih rapi untuk individu dan kebutuhan internal kecil." },
@@ -111,8 +111,8 @@ const translations = {
   },
   en: {
     meta: {
-      title: "KuroTech — POS, Finance, and Custom Software",
-      description: "KuroTech helps small businesses build POS systems, IoT scale integration, finance tracking apps, and custom software solutions that are ready to use."
+      title: "Kuroposku — POS, Finance, and Custom Software",
+      description: "Kuroposku helps small businesses build POS systems, IoT scale integration, finance tracking apps, and custom software solutions that are ready to use."
     },
     accessibility: {
       skip: "Skip to main content"
@@ -133,7 +133,7 @@ const translations = {
     hero: {
       eyebrow: "KuroPOS • Kuro • Custom Software",
       title: "Clean digital systems for stores, transactions, and finance records.",
-      lead: "KuroTech helps small businesses build more measurable operations: POS for sales, IoT scale integration for weighted products, and finance apps for daily records.",
+      lead: "Kuroposku helps small businesses build more measurable operations: POS for sales, IoT scale integration for weighted products, and finance apps for daily records.",
       primaryCta: "View Solutions",
       secondaryCta: "Chat on WhatsApp",
       metric1: { value: "2", label: "core products" },
@@ -183,7 +183,7 @@ const translations = {
       c1: { title: "Device integration", desc: "IoT scales, barcode scanners, thermal printers, and other cashier devices can be prepared based on your operational needs." },
       c2: { title: "Flexible business flow", desc: "Products, branches, user roles, pricing, stock, and reports can be adjusted to how your business works." },
       c3: { title: "Static-web ready", desc: "This company profile works on GitHub Pages without a build tool, database, or additional server." },
-      c4: { title: "Custom applications", desc: "Beyond internal products, KuroTech also builds web, desktop, mobile, and system integration solutions." }
+      c4: { title: "Custom applications", desc: "Beyond internal products, Kuroposku also builds web, desktop, mobile, and system integration solutions." }
     },
     process: {
       eyebrow: "How we work",
@@ -196,7 +196,7 @@ const translations = {
     },
     services: {
       eyebrow: "Services",
-      title: "What KuroTech can help with.",
+      title: "What Kuroposku can help with.",
       lead: "Use a ready product, request customization, or build a new system from scratch.",
       s1: { title: "KuroPOS implementation", desc: "Product, cashier, branch, POS device, and scale integration setup for stores." },
       s2: { title: "Kuro finance app", desc: "A cleaner finance tracking solution for individuals and small internal needs." },
@@ -222,7 +222,7 @@ const translations = {
 };
 
 const DEFAULT_LANG = "id";
-const STORAGE_KEY = "kurotech-language";
+const STORAGE_KEY = "Kuroposku-language";
 
 function getNestedValue(source, path) {
   return path.split(".").reduce((current, key) => current?.[key], source);
